@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="http://go.pardot.com" />
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Spectro Scientific Newsletter</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=roboto"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/universalis-adf-std"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/univers-next-pro-extended"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/universal-condensed"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <script
+      type="text/javascript"
+      src="https://go.spectrosci.com/pd.js"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+      /* --------------------------------------------------------------
+                FORM STYLES
+            ----------------------------------------------------------------- */
+
+      /* Border-box box model FTW! */
+      #pardot-form,
+      #pardot-form *,
+      #pardot-form *:before,
+      #pardot-form *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      /* Override form margin and padding set in the default stylesheet. Inherit font and color from page. */
+      #pardot-form {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+        color: inherit;
+      }
+
+      /* Override form field wrapper margin and padding set in the default stylesheet. */
+      #pardot-form .form-field,
+      #pardot-form .submit {
+        margin: 15px 0 15px 0;
+        padding: 0;
+      }
+
+      /* Remove top margin from first from field wrapper. */
+      #pardot-form .form-field:first-child {
+        margin-top: 0;
+      }
+
+      /* Set default input style. */
+      #pardot-form input {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: #2c3e50;
+        font-size: 14px;
+        padding: 7px 15px;
+        width: 100%;
+      }
+
+      /* When labels are not floated left, set width on text inputs, textareas, and selects to 100%. */
+      #pardot-form input.text,
+      #pardot-form input.date,
+      #pardot-form textarea,
+      #pardot-form select {
+        width: 100%;
+        font-family: inherit;
+        color: inherit;
+      }
+
+      /* When labels are floated left, set width on field labels to a percentage of available width. In browsers that support calc(), use static label width instead and the form field will consume the remaining width. */
+      #pardot-form.label-left .field-label {
+        width: 35%;
+        width: calc(115px);
+      }
+
+      /* When labels are floated left, set width on text inputs, textareas, and selects to a percentage. In supported browsers, set width to 100% minus the width of the label instead. */
+      #pardot-form.label-left input.text,
+      #pardot-form.label-left input.date,
+      #pardot-form.label-left textarea,
+      #pardot-form.label-left select {
+        width: 65%;
+        width: calc(100% - 115px);
+      }
+
+      /* When labels are floated left, indent supporting form elements by the same amount as the field label. */
+      #pardot-form.label-left span.value,
+      #pardot-form.label-left .description,
+      #pardot-form.label-left .no-label > *,
+      #pardot-form.label-left .submit,
+      #pardot-form.label-left .error.no-label {
+        margin-left: 35%;
+        margin-left: calc(115px);
+      }
+
+      /* Remove unnecessary left padding on required radio/checkbox field labels when label alignment is set to above and the required symbol is set to default in form styling options. */
+      #pardot-form label.inline {
+        padding-left: 0;
+      }
+
+      /* Backup styles in case padding is added to text inputs. */
+      #pardot-form input.date {
+        padding-left: 20px;
+        background-position: left center;
+      }
+
+      #pardot-form .submit input {
+        background-color: #337ab7;
+        color: #fff;
+      }
+
+      /* --------------------------------------------------------------
+                TEMPLATE DETAILS
+            ----------------------------------------------------------------- */
+      body {
+        /*font-family: "Helvetica, Arial, sans-serif;*/
+        font-family: helvetica;
+        /*font-weight: 600;*/
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: fit-content;
+        justify-self: auto;
+        font-size: 16px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .header {
+        display: inline-flex; /* Use flexbox to align items */
+        align-items: flex-end; /* Vertically center the content */
+        /* justify-content: space-between; Align content to the left */
+        /* flex-direction: row; */
+        /* border-bottom: 2px solid rgb(217, 225, 228); */
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+        /* border-radius: 10px; */
+        /* flex-wrap: wrap; */
+        /* align-content: center; */
+        width: 100%;
+      }
+
+      .header img {
+        max-width: 550px; /* Restrict the image size */
+        /* margin-left: 120px; */
+        transform: scale(0.7);
+      }
+      .social-icons {
+        text-align: right;
+      }
+
+      /* .social-icons h2 {
+        display: initial;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #006fa0;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 5px;
+      } */
+
+      .social-icons .fa {
+        padding: 10px;
+        font-size: 20px;
+        width: 40px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 40px;
+      }
+
+      .social-icons .fa:hover {
+        opacity: 0.7;
+      }
+      .social-icons .fa-linkedin {
+        background: #007bb5;
+        color: white;
+      }
+      .social-icons .fa-youtube-play {
+        background: #bb0000;
+        color: white;
+      }
+
+      .hover-underline {
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+
+      .hover-underline::after,
+      .hover-underline::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, #5c2c8b, #7abc45);
+        bottom: -5px;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease-out;
+      }
+
+      .hover-underline::before {
+        top: -5px;
+        transform-origin: left;
+      }
+
+      .hover-underline:hover::after,
+      .hover-underline:hover::before {
+        transform: scaleX(1);
+      }
+
+      /*.OrangeImage {
+            position: relative;
+            top: 117px;
+            right: -404px;
+          }*/
+      /* Center the logo */
+      .logo {
+        text-align: left;
+        mix-blend-mode: multiply;
+      }
+
+      h1 {
+        font-size: 40px;
+        font-weight: 600;
+      }
+
+      h2 {
+        font-size: 30px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      p {
+        font-size: inherit;
+        color: #000;
+      }
+
+      ul {
+        list-style: none; /* Optional: Removes default bullet points */
+        padding: 0; /* Optional: Removes default padding */
+      }
+
+      ul li {
+        margin-bottom: 10px; /* Adds space between list items */
+      }
+
+      .list-link:hover {
+        text-decoration: none; /* Ensures no underline even on hover */
+        color: #0c5394; /* Keeps the same color on hover */
+      }
+      .left-download-content {
+        margin: 0px 10px;
+      }
+      .left-download-content a {
+        text-decoration: none !important;
+        color: #006fa0 !important;
+      }
+      .left-download-content:has(p:empty) {
+        display: none;
+      }
+      /* Images do not extend containers */
+      /* img {
+        max-width: 100%;
+        width: fit-content;
+      } */
+      table img {
+        width: 100%;
+        max-width: 150px !important;
+      }
+
+      /* Grey BG */
+      .grey {
+        background-color: #eee;
+      }
+
+      /* Enable strong control over editable table cell widths */
+      table.editable-table {
+        table-layout: fixed;
+        width: 100%;
+      }
+
+      /* Set default editable table cell spacing & widths */
+      table.editable-table.3col td {
+        padding: 0px 15px;
+        width: 33%;
+      }
+      table.editable-table.2col td {
+        padding: 0px 15px;
+        width: 50%;
+      }
+
+      /* --------------------------------------------------------------
+                                                 MAIN CSS
+                       ----------------------------------------------------------------- */
+
+      .main-content {
+        min-height: 400px;
+        padding: 25px;
+        max-width: fit-content;
+        display: flex;
+        margin: 0 auto;
+        /* padding: 0; */
+        align-items: baseline;
+      }
+      .row.align-items-center.content-area {
+        max-width: fit-content;
+      }
+      .main-content p {
+        color: #000;
+        font-size: 18px;
+      }
+      .main-content h1 {
+        color: #000;
+        font-size: 50px;
+      }
+
+      .main-content h2 {
+        color: #000;
+        font-size: 35px;
+      }
+
+      .main-content h3 {
+        color: #000;
+        font-size: 24px;
+      }
+      .left-content {
+        word-wrap: break-word;
+        white-space: normal;
+      }
+
+      .right-content {
+        word-wrap: break-word;
+        white-space: normal;
+      }
+      /* --------------------------------------------------------------
+                           CONTENT CSS
+      ----------------------------------------------------------------- */
+
+      iframe {
+        max-width: 100%;
+        width: 100vw;
+      }
+
+      img {
+        max-width: 100%;
+        width: fit-content;
+      }
+
+      /* --------------------------------------------------------------
+                FOOTER
+            ----------------------------------------------------------------- */
+
+      footer {
+        /* background-color: #f6f6f6;*/
+        padding: 30px 0;
+        /* font-family: "Univers Next Pro Extended 400", sans-serif; */
+        background-color: #0078ae;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        min-height: fit-content;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 900px; /* Ensures the footer container has a defined width */
+        margin: 0 auto;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: nowrap; /* Ensures the links are next to each other */
+        gap: 20px; /* Adds a small gap between the two sections */
+        text-align: left;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 7px;
+        width: 135px;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+        color: #0c5394;
+
+        font-size: 14px;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-social {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Centers the social media icons */
+        width: 100%; /* Ensures the social media section spans the full width */
+      }
+
+      .footer-social a img {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
+
+      /* --------------------------------------------------------------
+                SPACING
+            ----------------------------------------------------------------- */
+
+      /* make element edge to edge */
+      .flush {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      /* vertical padding */
+      .vpadding {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      /* side padding only */
+      .hpadding {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      /* top padding only */
+      .tpadding {
+        padding-top: 20px;
+        padding-bottom: 0px;
+      }
+
+      /* bottom padding only */
+      .bpadding {
+        padding-top: 0px;
+        padding-bottom: 20px;
+      }
+
+      /* --------------------------------------------------------------
+                SOCIAL
+            ----------------------------------------------------------------- */
+
+      /* Social list spacing */
+      .social-list {
+        padding-left: 5px;
+      }
+
+      /* Social list display next to one another */
+      .social-list li,
+      .social-list {
+        display: inline;
+      }
+
+      /* Disable underlines on image link hover */
+      .social-list a:hover {
+        text-decoration: none;
+      }
+
+      /* Share button image specific style */
+      #share-buttons img {
+        width: 20px;
+        border: 0;
+        box-shadow: 0;
+        display: inline;
+      }
+
+      /* --------------------------------------------------------------
+                RESPONSIVE
+            ----------------------------------------------------------------- */
+      /* xs */
+      @media (max-width: 767px) {
+        .pull-right {
+          float: none !important;
+          text-align: center;
+        }
+        .social {
+          text-align: center;
+        }
+        .edit-image {
+          width: 290px;
+          padding-bottom: 5px;
+        }
+        .left-section {
+          display: none;
+        }
+      }
+
+      /* sm */
+      @media (max-width: 768px) {
+        #pardot-form.label-left .field-label {
+          width: 100%;
+          text-align: left;
+        }
+        #pardot-form.label-left input.text,
+        #pardot-form.label-left input.date,
+        #pardot-form.label-left textarea,
+        #pardot-form.label-left select {
+          width: 100%;
+        }
+        #pardot-form.label-left span.value,
+        #pardot-form.label-left .description,
+        #pardot-form.label-left .no-label > *,
+        #pardot-form.label-left .submit,
+        #pardot-form.label-left .error.no-label {
+          width: 100%;
+        }
+        #pardot-form.label-left span.value,
+        #pardot-form.label-left .description,
+        #pardot-form.label-left .no-label > *,
+        #pardot-form.label-left .submit,
+        #pardot-form.label-left .error.no-label {
+          margin-left: 0;
+        }
+        form.form p {
+          margin-left: 0px !important;
+          padding-left: 0px !important;
+        }
+        table.editable-table td {
+          display: block;
+          width: 100% !important;
+        }
+      }
+      /* md */
+      @media (max-width: 992px) {
+      }
+      /* lg */
+      @media (min-width: 1200px) {
+      }
+    </style>
+    <script type="text/javascript">
+      piAId = "1084382";
+      piCId = "61571";
+      piHostname = "go.spectrosci.com";
+
+      (function () {
+        function async_load() {
+          var s = document.createElement("script");
+          s.type = "text/javascript";
+          s.src =
+            ("https:" == document.location.protocol ? "https://" : "http://") +
+            piHostname +
+            "/pd.js";
+          var c = document.getElementsByTagName("script")[0];
+          c.parentNode.insertBefore(s, c);
+        }
+        if (window.attachEvent) {
+          window.attachEvent("onload", async_load);
+        } else {
+          window.addEventListener("load", async_load, false);
+        }
+      })();
+    </script>
+    <script src="chrome-extension://mmejcjjlincimgicadmipokeopbhbapa/injectScript.js"></script>
+    <script
+      type="text/javascript"
+      src="https://go.spectrosci.com/analytics?ver=3&amp;visitor_id=511801071&amp;visitor_id_sign=d09ab47c44c06d5a1583f7ecae0e9c2e9c518c0ef9f558a36d4b93bfac40b3c2eeef037948e2d9e120957b39c184a11d0702a93a&amp;pi_opt_in=true&amp;campaign_id=61571&amp;account_id=1084382&amp;title=Spectro%20Scientific%20Newsletter&amp;url=https%3A%2F%2Fgo.spectrosci.com%2FTheMonitor2025Q1Newsletter&amp;referrer=https%3A%2F%2Fembedded.pardot.force.com%2F"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <div class="jumbotron container-fluid hover-underline">
+        <div class="header">
+          <div class="col-xs-12 logo">
+            <a href="https://www.spectrosci.com/">
+              <img
+                src="https://storage.pardot.com/1083382/1733375241g8VCsj0c/Spectro_Logo.png"
+                alt="Spectro Scientific Logo"
+                width="550"
+                placehold="logo"
+                pardot-region="logo"
+                pardot-region-type="image"
+            /></a>
+          </div>
+
+          <div class="col-xs-12 social-icons">
+            <!-- <h2>Follow Us:</h2> -->
+            <a
+              href="https://www.linkedin.com/company/spectro-inc/"
+              class="fa fa-linkedin"
+            ></a>
+            <a
+              href="http://www.youtube.com/user/SpectroScientific"
+              class="fa fa-youtube-play"
+            ></a>
+          </div>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+      <br />
+
+      <!---================== CONTENT ==========================-->
+
+      <div class="main-content container-fluid text-center">
+        <div class="row align-items-center content-area">
+          <div
+            class="col-12 col-md-6 col-lg-6 col-xl-6 left-content"
+            pardot-region="Left Content"
+            pardot-region-type="pardot"
+          >
+            <p>
+              jebagljsblabgasbgblasbglbaslbglsbakglbsalgkbaslkbkuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+            </p>
+          </div>
+          <br />
+          <div
+            class="col-12 col-md-6 col-lg-6 col-xl-6 right-content"
+            pardot-region="Right Content"
+            pardot-region-type="pardot"
+          >
+            <p>This is where the form will go</p>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    </main>
+    <footer>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          align-items: center;
+        "
+      >
+        <div>
+          <img
+            alt="Spectro Scientific Logo"
+            src="https://storage.pardot.com/1083382/1733809305KjIv43lq/spectroscientific_logo_white_new.png"
+            style="
+              height: 120px;
+              display: block;
+              margin-bottom: 20px;
+              margin-left: 20px;
+            "
+          />
+        </div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 80px;
+            justify-content: space-evenly;
+            margin: 0px 30px;
+          "
+        >
+          <div>
+            <ul
+              style="list-style: none; padding: 0; margin: 0; line-height: 1.8"
+            >
+              <li>
+                <a
+                  href="https://www.spectrosci.com/product"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Product</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.spectrosci.com/services"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://store.spectrosci.com/"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Consumables
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://store.spectrosci.com/"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Accessories
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://store.spectrosci.com/"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >E-Store</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul
+              style="list-style: none; padding: 0; margin: 0; line-height: 1.8"
+            >
+              <li>
+                <a
+                  href="https://www.spectrosci.com/company"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Company
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.spectrosci.com/knowledge-center"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Knowledge
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.spectrosci.com/industries"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Industries</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.spectrosci.com/services/training-courses"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >Training
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.spectrosci.com/news/news"
+                  style="color: #ffffff; text-decoration: none"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                  >News
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p style="margin: 0; line-height: 1.8; color: #fff">
+              <strong>Spectro Scientific</strong><br />
+              One Executive Drive, Suite 101<br />
+              Chelmsford, MA 01824-2563<br /><a
+                href="tel:9784860123"
+                style="color: #ffffff; text-decoration: none"
+                >978.486.0123</a
+              >
+            </p>
+
+            <!-- Right Column: Social Media -->
+
+            <br />
+            <div class="social-icons-footer" style="text-align: left">
+              <a href="https://x.com/SpectroSci" style="margin-right: 15px"
+                ><i
+                  class="bi bi-twitter-x"
+                  style="font-size: 25px; color: rgb(255, 255, 255)"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-twitter-x"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                    ></path></svg
+                ></i>
+                <!-- <i
+              class="fa fa-twitter"
+              style="font-size: 25px; color: white"
+              onmouseover="this.style.color='#7AC143 /*231F20*/'"
+              onmouseout="this.style.color='#ffffff'"
+            ></i
+          > --></a
+              >
+              <a
+                href="https://www.linkedin.com/company/spectro-inc/"
+                style="margin-right: 15px; text-decoration: none"
+                ><i
+                  class="fa fa-linkedin"
+                  style="font-size: 25px; color: white"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                ></i
+              ></a>
+              <a href="https://www.youtube.com/user/SpectroScientific">
+                <i
+                  class="fa fa-youtube-play"
+                  style="font-size: 25px; color: white"
+                  onmouseover="this.style.color='#7AC143 /*231F20*/'"
+                  onmouseout="this.style.color='#ffffff'"
+                ></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Left Column: Logo -->
+
+          <!-- Middle Column: Links -->
+
+          <!-- Right Column: Contact Info -->
+        </div>
+      </div>
+      <!-- Bottom Section: Footer Links -->
+
+      <div
+        style="
+          margin-top: 20px;
+          text-align: center;
+          padding-top: 10px;
+          margin-right: 100px;
+          margin-left: 100px;
+        "
+      >
+        © 2021-2025 Ametek Spectro Scientific |
+        <a
+          href="https://www.spectrosci.com/-/media/project/ameteksxa/spectroscientific/ametekspectro/shared/iso-cert/iso-9001-2015.pdf?la=en&amp;revision=54b357f7-83e9-4316-8631-fb5fa4d8f92b&amp;hash=FCFE5ADEB74D1AC04991A28BEC23EEAB"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onmouseover="this.style.color='#7AC143 /*231F20*/'"
+          onmouseout="this.style.color='#ffffff'"
+          >Certified to ISO 9001:2015</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/privacy"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onmouseover="this.style.color='#7AC143 /*231F20*/'"
+          onmouseout="this.style.color='#ffffff'"
+          >Privacy Policy</a
+        >
+        |
+        <a
+          href="https://www.ametek.com/cookies"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onmouseover="this.style.color='#7AC143 /*231F20*/'"
+          onmouseout="this.style.color='#ffffff'"
+          >Cookie Policy</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/forms/unsubscribeformpage"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onmouseover="this.style.color='#7AC143 /*231F20*/'"
+          onmouseout="this.style.color='#ffffff'"
+          >Unsubscribe</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/do-not-sell-share"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onmouseover="this.style.color='#7AC143 /*231F20*/'"
+          onmouseout="this.style.color='#ffffff'"
+          >Do Not Sell or Share My Personal Information</a
+        >
+        |
+        <a
+          href="https://www.ametek.com/terms-of-use"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onmouseover="this.style.color='#7AC143 /*231F20*/'"
+          onmouseout="this.style.color='#ffffff'"
+          >Terms of Use</a
+        >
+      </div>
+    </footer>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function scrollToSection(targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+          console.log(`Scrolling to ${targetId}`);
+        } else {
+          console.error(`Element with ID "${targetId}" not found.`);
+        }
+      }
+
+      window.onload = function () {
+        let hasAnimated = false; // Flag to ensure the animation runs only once
+
+        function isElementInViewport(el) {
+          const rect = el.getBoundingClientRect();
+          const windowHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          console.log(rect.top, "View Check", window.outerHeight, rect.bottom);
+          return (
+            rect.top <= window.outerHeight && // Top of the element is within the viewport
+            rect.bottom >= 0 // Bottom of the element is within the viewport
+          );
+        }
+
+        function handleScroll(targetId) {
+          console.log("Handling Scroll...");
+          const target = document.getElementById(targetId);
+          if (!hasAnimated && target && isElementInViewport(target)) {
+            target.style.opacity = "1"; // Ensure opacity is reset
+            hasAnimated = true; // Set the flag to true so the animation runs only once
+            target.classList.add("start-animation"); // Add a class to start animation
+          }
+        }
+
+        // Example usage for specific section
+        const targetId = "target-section"; // Replace this with the desired ID
+        handleScroll(targetId);
+
+        window.addEventListener("scroll", () => handleScroll(targetId));
+      };
+    </script>
+  </body>
+</html>

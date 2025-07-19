@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      a {
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      /*Navigation from here*/
+      .nav-btn {
+        flex: 3;
+        display: flex;
+      }
+      .spectro-nav-links {
+        flex: 2;
+        /* background-color: black; */
+      }
+      .spectro-nav-links > ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* list-style: none; */
+        text-transform: uppercase;
+      }
+      .spectro-nav-link {
+        position: relative;
+      }
+      .spectro-nav-link > a {
+        line-height: 3rem;
+        color: #666;
+        padding: 0 0.8rem;
+        letter-spacing: 1px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: 0.2s;
+        /* background: #bcbcbc; */
+      }
+      .spectro-nav-link > a > i {
+        margin-left: 0.2rem;
+      }
+      .spectro-nav-link:hover > a {
+        transform: scale(1.1);
+      }
+      .spectro-nav-link:hover > .dropdown,
+      .dropdown-link:hover > .dropdown {
+        transform: translate(0, 0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 10rem;
+        background: #1f1f1f;
+        /* transform: translateY(10px); */
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+
+      .dropdown-link {
+        position: relative;
+      }
+      .dropdown ul {
+        position: relative;
+        padding: 0rem 0.9rem;
+        text-align: left;
+      }
+      .dropdown-link > a {
+        display: flex;
+        /* background-color: #000; */
+        color: #fff;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        align-items: center;
+        justify-content: space-between;
+        float: left;
+      }
+      .dropdown-link:hover > a {
+        /* background-color: ; */
+        color: #006fa0;
+      }
+      .dropdown.second {
+        top: 0;
+        left: 100%;
+        padding-left: 0.8rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="spectro-nav-btn">
+      <div class="spectro-nav-links">
+        <ul>
+          <li class="spectro-nav-link">
+            <a href="#">Products</a>
+            <div class="dropdown container-fluid">
+              <ul>
+                <li class="dropdown-link">
+                  <a href="#">Oil Analyzers</a>
+                  <div class="dropdown second">
+                    <ul>
+                      <li class="dropdown-link">
+                        <a href="#">Link 1</a>
+                      </li>
+                      <li class="dropdown-link">
+                        <a href="#">Link 2</a>
+                      </li>
+                      <li class="dropdown-link">
+                        <a href="#">Link 3</a>
+                      </li>
+                      <li class="dropdown-link">
+                        <a href="#">Link 4</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="dropdown-link">
+                  <a href="#">Oil in Water/Soil Analyzers</a>
+                </li>
+                <li class="dropdown-link">
+                  <a href="#">Fuel/Other Analyzers</a>
+                </li>
+                <li class="dropdown-link">
+                  <a href="#">Software</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="spectro-nav-link">
+            <a href="#">Services</a>
+          </li>
+          <li class="spectro-nav-link">
+            <a href="#">Knowledge Centre</a>
+          </li>
+          <li class="spectro-nav-link">
+            <a href="#">Industries</a>
+          </li>
+          <li class="spectro-nav-link">
+            <a href="#">E-Store</a>
+          </li>
+          <li class="spectro-nav-link">
+            <a href="#">Company</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

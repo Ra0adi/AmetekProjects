@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="http://go.pardot.com" />
+    <meta charset="utf-8" />
+    <meta name="description" content="%%description%%" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>%%title%%</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+      /* --------------------------------------------------------------
+                           FORM STYLES
+                       ----------------------------------------------------------------- */
+
+      /* Border-box box model FTW! */
+      #pardot-form,
+      #pardot-form *,
+      #pardot-form *:before,
+      #pardot-form *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      /* Override form margin and padding set in the default stylesheet. Inherit font and color from page. */
+      #pardot-form {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+        color: inherit;
+      }
+
+      /* Override form field wrapper margin and padding set in the default stylesheet. */
+      #pardot-form .form-field,
+      #pardot-form .submit {
+        margin: 15px 0 15px 0;
+        padding: 0;
+      }
+
+      /* Remove top margin from first from field wrapper. */
+      #pardot-form .form-field:first-child {
+        margin-top: 0;
+      }
+
+      /* Set default input style. */
+      #pardot-form input {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: #2c3e50;
+        font-size: 14px;
+        padding: 7px 15px;
+        width: 100%;
+      }
+
+      /* When labels are not floated left, set width on text inputs, textareas, and selects to 100%. */
+      #pardot-form input.text,
+      #pardot-form input.date,
+      #pardot-form textarea,
+      #pardot-form select {
+        width: 100%;
+        font-family: inherit;
+        color: inherit;
+      }
+
+      /* When labels are floated left, set width on field labels to a percentage of available width. In browsers that support calc(), use static label width instead and the form field will consume the remaining width. */
+      #pardot-form.label-left .field-label {
+        width: 35%;
+        width: calc(115px);
+      }
+
+      /* When labels are floated left, set width on text inputs, textareas, and selects to a percentage. In supported browsers, set width to 100% minus the width of the label instead. */
+      #pardot-form.label-left input.text,
+      #pardot-form.label-left input.date,
+      #pardot-form.label-left textarea,
+      #pardot-form.label-left select {
+        width: 65%;
+        width: calc(100% - 115px);
+      }
+
+      /* When labels are floated left, indent supporting form elements by the same amount as the field label. */
+      #pardot-form.label-left span.value,
+      #pardot-form.label-left .description,
+      #pardot-form.label-left .no-label > *,
+      #pardot-form.label-left .submit,
+      #pardot-form.label-left .error.no-label {
+        margin-left: 35%;
+        margin-left: calc(115px);
+      }
+
+      /* Remove unnecessary left padding on required radio/checkbox field labels when label alignment is set to above and the required symbol is set to default in form styling options. */
+      #pardot-form label.inline {
+        padding-left: 0;
+      }
+
+      /* Backup styles in case padding is added to text inputs. */
+      #pardot-form input.date {
+        padding-left: 20px;
+        background-position: left center;
+      }
+
+      #pardot-form .submit input {
+        background-color: #337ab7;
+        color: #fff;
+      }
+
+      /* --------------------------------------------------------------
+                           TEMPLATE DETAILS
+                       ----------------------------------------------------------------- */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* --------------------------------------------------------------
+                                                 BODY CSS
+                       ----------------------------------------------------------------- */
+
+      body {
+        font-family: "pt-sans", sans-serif;
+        font-weight: 600;
+        display: grid;
+        margin: 0;
+      }
+
+      /* --------------------------------------------------------------
+                           HEADER CSS
+                       ----------------------------------------------------------------- */
+
+      .header {
+        display: inline-flex; /* Use flexbox to align items */
+        align-items: flex-end; /* Vertically center the content */
+        flex-direction: row;
+        border-radius: 10px;
+        width: 100%;
+      }
+
+      .header img {
+        max-width: 550px;
+        transform: scale(0.6);
+      }
+
+      .social-icons {
+        text-align: right;
+      }
+      /* .social-icons h2 {
+        display: initial;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #006fa0;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 5px;
+      } */
+
+      .social-icons .fa {
+        padding: 10px;
+        font-size: 27px;
+        width: 54px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 50px;
+      }
+
+      .social-icons .fa-linkedin:hover {
+        background: #007bb5;
+        color: white;
+      }
+      .social-icons .fa-youtube-play:hover {
+        background: #bb0000;
+        color: white;
+      }
+      .social-icons .fa-linkedin {
+        background: transparent;
+        color: #007bb5;
+      }
+      .social-icons .fa-youtube-play {
+        background: transparent;
+        color: #bb0000;
+      }
+
+      .hover-underline {
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+
+      .hover-underline::after,
+      .hover-underline::before {
+        content: "";
+        position: relative;
+        width: 100%;
+        height: 2.5px;
+        background: linear-gradient(to right, #00757c, #bbd3d4);
+        bottom: 0px;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease-out;
+        margin: 0;
+      }
+
+      .hover-underline::before {
+        display: none;
+      }
+
+      .hover-underline:hover::after,
+      .hover-underline:hover::before {
+        transform: scaleX(1);
+      }
+      .logo {
+        text-align: left;
+        mix-blend-mode: multiply;
+      }
+
+      /* a:hover,
+      a:focus {
+        color: #2a6496;
+        text-decoration: underline;
+      } */
+
+      /* --------------------------------------------------------------
+                                                 Navigation CSS
+                       ----------------------------------------------------------------- */
+
+      ul#main-menu {
+        display: inline-flex;
+        list-style: none;
+        color: #fff;
+        padding: 15px;
+        margin: 15px;
+        gap: 50px;
+        /*margin-left: 6%;*/
+      }
+
+      ul#main-menu a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      /* ul#main-menu li {
+        width: auto;
+      } */
+
+      ul#main-menu li:hover {
+        background: #003f3d;
+        /*border-radius: 3px;*/
+      }
+      ul#main-menu li:hover a {
+        color: #fff;
+      }
+
+      .has-sub-menu,
+      .has-sub-menu2 {
+        display: none;
+      }
+
+      ul#main-menu li:hover .has-sub-menu {
+        display: block;
+        position: absolute;
+        background: #003f3d;
+        /*border-radius: 10px;*/
+        z-index: 109;
+        padding: 20px;
+        /* padding: 0px 0px 0px 60px; */
+        min-width: max-content;
+        min-height: max-content;
+      }
+
+      .has-sub-menu ul li {
+        padding: 10px;
+      }
+
+      .has-sub-menu2 li {
+        padding: 0;
+        margin: 0;
+      }
+      .has-sub-menu2 ul li {
+        font-weight: 300;
+      }
+      .has-sub-menu ul li:hover .has-sub-menu2 {
+        display: block;
+        position: relative;
+        z-index: 110;
+      }
+      ul#main-menu li a {
+        padding: 10px;
+        margin: 5px;
+      }
+      /* ul#main-menu li:hover {
+        padding: 0px 5px;
+      } */
+
+      /* ul#main-menu li:hover .has-sub-menu ul {
+        display: block;
+        margin: 10px;
+      } */
+      /* ul#main-menu li:hover .has-sub-menu ul li {
+        padding: 10px;
+        border-bottom: 1px dotted #fff;
+        background: transparent;
+        border-radius: 0;
+        text-align: left;
+      } */
+      /* ul#main-menu li:hover .has-sub-menu ul li:last-child {
+        border: none;
+      } */
+
+      /* .has-sub-menu li:hover .has-sub-menu2 {
+        display: block;
+        position: relative;
+      } */
+
+      /* .has-sub-menu li:hover .has-sub-menu2 ul {
+        display: block;
+        margin: 10px;
+      } */
+
+      /* .has-sub-menu li:hover .has-sub-menu2 ul li {
+        padding: 10px;
+        border-bottom: 1px dotted #fff;
+        background: transparent;
+        border-radius: 0;
+        text-align: left;
+      } */
+
+      /* --------------------------------------------------------------
+                                                 MAIN CSS
+                       ----------------------------------------------------------------- */
+
+      .main-content {
+        min-height: 400px;
+        padding: 10px 50px;
+      }
+      .pfirstLetter {
+        /* font-family: Times New Roman, Times, serif; */
+        font-size: 30px !important;
+        color: #05747c !important;
+      }
+
+      .main-content p {
+        color: #484848;
+        font-size: 18px;
+      }
+      .main-content h1 {
+        /* color: #000;*/
+        /* font-size: 100px; */
+        font-weight: 600;
+        color: #05747c;
+      }
+
+      .main-content h2 {
+        color: #000;
+        font-size: 35px;
+      }
+
+      .main-content h3 {
+        color: #000;
+        font-size: 24px;
+      }
+
+      .parent {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /* grid-template-rows: repeat(11, 1fr); */
+        grid-template-rows: repeat(11, auto);
+        gap: 8px;
+        justify-content: space-around;
+        max-height: fit-content;
+        max-width: 100%;
+      }
+      div.content-box img {
+        border-radius: 5px;
+        object-fit: contain;
+        max-width: 100%;
+        max-height: min-content;
+      }
+      .div1 {
+        grid-column: span 4 / span 4;
+        min-height: fit-content !important;
+        /* border: #000 dotted; */
+      }
+
+      .content-heading {
+        font-family: "Times New Roman", Times, serif !important;
+        text-transform: uppercase !important;
+        line-height: normal !important;
+        font-size: 190px;
+        /*text-shadow: 9px 10px 12px #969696;*/
+        /* box-shadow: inset 0px 10px 13px 2px #c6c6c6; */
+        border-radius: 10px;
+      }
+
+      .content-subheading {
+        font-family: "Roboto", sans-serif !important;
+        text-transform: uppercase !important;
+      }
+
+      .line-break {
+        border: 1px solid #585858;
+      }
+
+      .div2 {
+        grid-row: span 8 / span 8;
+        grid-row-start: 2;
+        min-height: 100px;
+        /* border: #000 dotted; */
+        /* max-height: fit-content; */
+        background: #083c3c;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul.firstList {
+        /* position: absolute; */
+        /* top: 50%; */
+        /* left: 50%; */
+        /* transform: translate(-50%, -50%); */
+        /* display: flex; */
+        li {
+          list-style: none;
+          a {
+            position: relative;
+            display: block;
+            text-transform: uppercase;
+            /* margin: 20px 0; */
+            padding: 5px 40px;
+            text-decoration: none;
+            color: #fff;
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            font-weight: 200;
+            transition: 0.2s;
+            z-index: 1;
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              /* width: 100%; */
+              /* height: 100%; */
+              /* border-top: 2px solid #5c2c8b; */
+              /* border-bottom: 2px solid #5c2c8b; */
+              transform: scaleY(2);
+              opacity: 0;
+              transition: 0.3s;
+            }
+            &:after {
+              content: "";
+              position: absolute;
+              top: 2px;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #b5b5b5;
+              transform: scale(0);
+              border-radius: 5px;
+              box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+              opacity: 0;
+              transition: 0.3s;
+              z-index: -1;
+            }
+            &:hover {
+              color: #000;
+              font-weight: 400;
+              &:before {
+                transform: scaleY(1);
+                opacity: 1;
+              }
+              &:after {
+                transform: scaleY(1);
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
+      ul.firstList li {
+        padding: 20px 0px;
+      }
+
+      .left-section {
+        width: fit-content;
+        position: sticky;
+        top: 0;
+      }
+
+      .list-topic-1 {
+        color: #fff;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 600;
+        font-size: 40px;
+        text-transform: uppercase;
+      }
+
+      .list-topic-2 {
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+      }
+
+      .div3 {
+        grid-row: span 2 / span 2;
+        grid-column-start: 1;
+        grid-row-start: 10;
+        min-height: 100px;
+        /*border: #000 dotted;*/
+      }
+
+      .div4 {
+        grid-column: span 2 / span 2;
+        grid-row: span 1 / span 1;
+        grid-column-start: 2;
+        grid-row-start: 2;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+
+      .div5 {
+        grid-row: span 1 / span 1;
+        grid-column-start: 4;
+        grid-row-start: 2;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        align-self: center;
+        /*border: #000 dotted;*/
+      }
+
+      .div6 {
+        grid-row: span 1 / span 1;
+        grid-column: span 3 / span 3;
+        grid-column-start: 2;
+        grid-row-start: 3;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+
+      .div7 {
+        grid-column: span 2 / span 1;
+        grid-row: span 1 / span 1;
+        grid-column-start: 2;
+        grid-row-start: 4;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        align-self: center;
+        /*border: #000 dotted;*/
+      }
+
+      .div8 {
+        grid-column: span 2 / span 2;
+        grid-row: span 1 / span 1;
+        grid-column-start: 3;
+        grid-row-start: 4;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        /*border: #000 dotted;*/
+        text-align: left;
+      }
+
+      .div9 {
+        grid-row: span 1 / span 1;
+        grid-column: span 3 / span 3;
+        grid-column-start: 2;
+        grid-row-start: 5;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+
+      .div10 {
+        grid-row: span 1 / span 1;
+        grid-column: span 2 / span 2;
+        grid-column-start: 2;
+        grid-row-start: 6;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+
+      .div11 {
+        grid-column: span 1 / span 1;
+        grid-row: span 1 / span 1;
+        grid-row-start: 6;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        /* text-align: left; */
+        align-self: center;
+        /*border: #000 dotted;*/
+      }
+
+      .div12 {
+        grid-column: span 3 / span 3;
+        grid-row: span 1 / span 1;
+        grid-column-start: 2;
+        grid-row-start: 7;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+
+      .div13 {
+        grid-row: span 1 / span 1;
+        grid-column: span 1 / span 1;
+        grid-column-start: 2;
+        grid-row-start: 8;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        align-self: center;
+        /*border: #000 dotted;*/
+      }
+      .div14 {
+        grid-row: span 1 / span 1;
+        grid-column: span 2 / span 2;
+        grid-column-start: 3;
+        grid-row-start: 8;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        /*border: #000 dotted;*/
+        text-align: left;
+      }
+      .div15 {
+        grid-row: span 1 / span 1;
+        grid-column: span 3 / span 3;
+        grid-column-start: 2;
+        grid-row-start: 9;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+      .div16 {
+        grid-row: span 1 / span 1;
+        grid-column: span 2 / span 2;
+        grid-column-start: 2;
+        grid-row-start: 10;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+      .div17 {
+        grid-column: span 1 / span 1;
+        grid-row: span 1 / span 1;
+        grid-row-start: 10;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        align-self: center;
+        /*border: #000 dotted;*/
+      }
+      .div18 {
+        grid-row: span 1 / span 1;
+        grid-column: span 3 / span 3;
+        grid-column-start: 2;
+        grid-row-start: 11;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+      .divlast {
+        grid-column: span 4 / span 4;
+        min-height: 100px;
+        padding: 5px;
+        margin: 0;
+        text-align: left;
+        /*border: #000 dotted;*/
+      }
+
+      .content-box:empty {
+        display: none;
+      }
+
+      /* --------------------------------------------------------------
+                           CONTENT CSS
+      ----------------------------------------------------------------- */
+
+      h1 {
+        font-size: 100px;
+        color: #fff;
+      }
+      h2 {
+        font-size: 30px;
+        color: #fff;
+      }
+      h3 {
+        font-size: 24px;
+        font-weight: 300;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 300;
+        color: #fff;
+      }
+
+      iframe {
+        max-width: 100%;
+        width: 100vw;
+      }
+
+      ul {
+        list-style: none; /* Optional: Removes default bullet points */
+        padding: 0; /* Optional: Removes default padding */
+      }
+
+      ul li {
+        margin-bottom: 10px; /* Adds space between list items */
+      }
+
+      img {
+        max-width: 100%;
+        width: fit-content;
+      }
+
+      .body-content {
+        width: 100%;
+      }
+
+      .body-content img {
+        width: 100%;
+        border-radius: 15px;
+      }
+
+      .left-content p {
+        text-align: left;
+      }
+
+      /* --------------------------------------------------------------
+                           FOOTER CSS
+         ----------------------------------------------------------------- */
+
+      footer {
+        /* background-color: #f6f6f6;*/
+        padding: 30px 0;
+        /* font-family: "Univers Next Pro Extended 400", sans-serif; */
+        background-color: #262626;
+        color: #c1c1c1;
+        font-family: "pt-sans", sans-serif;
+        font-weight: 400;
+        font-size: 11px;
+        min-height: 50vh;
+        height: fit-content;
+      }
+
+      .footer-social {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Centers the social media icons */
+        width: 100%; /* Ensures the social media section spans the full width */
+      }
+
+      .footer-social a img {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
+
+      .footer-navigation-2 {
+        margin-top: 20px;
+        text-align: center;
+        padding-top: 10px;
+        margin-right: 100px;
+        margin-left: 100px;
+        gap: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .footer-container-1-1-links {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 30px;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
+      /* --------------------------------------------------------------
+                           SPACING
+                       ----------------------------------------------------------------- */
+      /* make element edge to edge */
+      /* .flush {
+        padding-left: 0;
+        padding-right: 0;
+      } */
+
+      /* vertical padding */
+      /* .vpadding {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      } */
+
+      /* side padding only */
+      /* .hpadding {
+        padding-left: 15px;
+        padding-right: 15px;
+      } */
+
+      /* top padding only */
+      /* .tpadding {
+        padding-top: 20px;
+        padding-bottom: 0px;
+      } */
+
+      /* bottom padding only */
+      /* .bpadding {
+        padding-top: 0px;
+        padding-bottom: 20px;
+      } */
+
+      /* --------------------------------------------------------------
+                           SOCIAL
+                       ----------------------------------------------------------------- */
+
+      /* Social list spacing */
+      .social-list {
+        padding-left: 5px;
+      }
+
+      /* Social list display next to one another */
+      .social-list li,
+      .social-list {
+        display: inline;
+      }
+
+      /* Disable underlines on image link hover */
+      .social-list a:hover {
+        text-decoration: none;
+      }
+
+      /* Share button image specific style */
+      #share-buttons img {
+        width: 20px;
+        border: 0;
+        box-shadow: 0;
+        display: inline;
+      }
+
+      /* --------------------------------------------------------------
+                           RESPONSIVE
+                       ----------------------------------------------------------------- */
+
+      #pardot-form.label-left .field-label {
+        width: 100%;
+        text-align: left;
+      }
+      #pardot-form.label-left input.text,
+      #pardot-form.label-left input.date,
+      #pardot-form.label-left textarea,
+      #pardot-form.label-left select {
+        width: 100%;
+      }
+      #pardot-form.label-left span.value,
+      #pardot-form.label-left .description,
+      #pardot-form.label-left .no-label > *,
+      #pardot-form.label-left .submit,
+      #pardot-form.label-left .error.no-label {
+        width: 100%;
+      }
+      #pardot-form.label-left span.value,
+      #pardot-form.label-left .description,
+      #pardot-form.label-left .no-label > *,
+      #pardot-form.label-left .submit,
+      #pardot-form.label-left .error.no-label {
+        margin-left: 0;
+      }
+      form.form p {
+        margin-left: 0px !important;
+        padding-left: 0px !important;
+      }
+      table.editable-table td {
+        display: block;
+        width: 100% !important;
+      }
+
+      /* xs */
+
+      @media (max-width: 400px) {
+        .column {
+          width: 50%;
+        }
+      }
+
+      /* sm */
+      @media (max-width: 600px) {
+        .content-heading {
+          font-size: 82px;
+        }
+      }
+
+      /* lg */
+      @media (max-width: 1100px) {
+        /* .content-area {
+          width: 100%;
+        } */
+
+        ul#main-menu {
+          display: none;
+        }
+        .parent {
+          display: block;
+        }
+        .content-box {
+          margin-top: 8px;
+        }
+      }
+      /* xllg */
+      @media (min-width: 1100px) {
+        .content-heading {
+          font-size: 12vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!---================== HEADER ==========================-->
+    <header>
+      <div id="header" class="jumbotron container-fluid hover-underline">
+        <div class="header col-lg-6">
+          <div class="col-xs-12 logo">
+            <a href="https://www.grabner-instruments.com/">
+              <img
+                src="https://storage.pardot.com/1083372/1739434266ZYYHEKa7/image.png"
+                alt="Grabner Instruments Logo"
+                width="550"
+                placehold="logo"
+                pardot-region="logo"
+                pardot-region-type="image"
+              />
+            </a>
+            <!-- <img class="OrangeImage" src="https://go.spectrosci.com/l/1083382/2024-12-06/2vnkkq/1083382/17334776947bqGuYjF/orange_bullet_1.webp"/> -->
+          </div>
+          <div class="col-xs-12 col-3 sm-clean social-icons">
+            <!-- <h2>Follow Us:</h2> -->
+            <a
+              pardot-region="linkedin"
+              pardot-region-type="link"
+              href="https://www.linkedin.com/company/grabner-instruments-messtechnik-gmbh"
+              class="fa fa-linkedin"
+            ></a>
+            <a
+              pardot-region="youtube"
+              pardot-region-type="link"
+              href="https://www.youtube.com/user/GRABNERXP"
+              class="fa fa-youtube-play"
+            ></a>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <ul id="main-menu" class="sm sm-clean" style="top: 0px">
+            <li>
+              <a href="https://www.grabner-instruments.com/products"
+                >PRODUCTS
+              </a>
+              <div class="has-sub-menu">
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/products/vapor-pressure"
+                      class="has-submenu"
+                      >Vapor Pressure
+                      <span class="sub-arrow">+</span>
+                    </a>
+
+                    <div class="has-sub-menu2">
+                      <ul>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/vapor-pressure/minivap-vp-vpl-vision"
+                            >MiniVap VP/VPL Vision</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/vapor-pressure/crude-oil-package-for-vapor-pressure"
+                            >Crude Oil Package for Vapor Pressure</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/vapor-pressure/minivap-on-line"
+                            >MiniVap On-Line RVP Analyzer</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/vapor-pressure/as-vision-autosampler"
+                            >AS Vision Autosampler</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/products/flashpoint"
+                      class="has-submenu"
+                      >Flashpoint
+                      <span class="sub-arrow">+</span>
+                    </a>
+                    <div class="has-sub-menu2">
+                      <ul>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/flashpoint/miniflash-fp-vision"
+                            >MINIFLASH FP Vision</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="/products/flashpoint/miniflash-fpa-flashpoint-autosampler"
+                            >MiniFlash FPA Vision Autosampler</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/products/fuel-analysis"
+                      class="has-submenu"
+                      >Fuel Analysis
+                      <span class="sub-arrow">+</span>
+                    </a>
+                    <div class="has-sub-menu2">
+                      <ul>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/fuel-analysis/miniscan-ir-vision-fuel-analyzer"
+                            >MINISCAN IR Vision</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/fuel-analysis/as-vision-autosampler"
+                            >AS Vision Autosampler</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/products/mobile-laboratories"
+                      >Mobile Laboratories</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/products/accessories"
+                      class="has-submenu"
+                      >Accessories and Software
+                      <span class="sub-arrow">+</span>
+                    </a>
+                    <div class="has-sub-menu2">
+                      <ul>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/accessories/fuel-analysis-calibration-and-verification-kit"
+                            >Fuel analysis Calibration and verification kit</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/accessories/cockpit-software-for-vision-analyzers"
+                            >COCKPIT™ Software for Vision Analyzers</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/products/accessories/miniwin-software"
+                            >MINIWIN Software</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li style="border-color: rgb(255, 255, 255)">
+              <a
+                href="https://www.grabner-instruments.com/industries"
+                class="has-submenu"
+                >INDUSTRIES
+              </a>
+              <div class="has-sub-menu">
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/industries/environment"
+                      >Environment</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/industries/food-flavor-and-fragrances"
+                      >Food, Flavor and Fragrances
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/industries/lubricants-and-greases"
+                      >Lubricants and Greases</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/industries/oilandgas"
+                      >Oil and Gas
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/industries/petrochemical-and-petroleum"
+                      >Petrochemical and Petroleum</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/industries/transportation-and-storage"
+                      >Transportation and Storage
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li style="border-color: rgb(255, 255, 255)">
+              <a
+                href="https://www.grabner-instruments.com/salesandsupport/sales"
+                class="has-submenu"
+                >SALES AND SUPPORT
+              </a>
+              <div class="has-sub-menu">
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/salesandsupport/quality/iso-certifications"
+                      class="has-submenu"
+                      >Quality
+                      <span class="sub-arrow">+</span>
+                    </a>
+                    <div class="has-sub-menu2">
+                      <ul>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/salesandsupport/quality/iso-certifications"
+                            >ISO Certifications</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/salesandsupport/training/fluid-management-academy"
+                      class="has-submenu"
+                      >Training
+                      <span class="sub-arrow">+</span>
+                    </a>
+                    <div class="has-sub-menu2">
+                      <ul>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/salesandsupport/training/fluid-management-academy"
+                            >Fluid Management Academy</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://go.grabner-instruments.com/2025-Training-Schedule"
+                            target="_blank"
+                            >Representative Training</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/salesandsupport/us-technical-support/service-request"
+                      class="has-submenu"
+                      >Technical Support
+                      <span class="sub-arrow">+</span>
+                    </a>
+                    <div class="has-sub-menu2">
+                      <ul>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/salesandsupport/us-technical-support/service-request"
+                            >Service Request</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.grabner-instruments.com/salesandsupport/us-technical-support/technical-support-request"
+                            >Technical Support Request</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a
+                href="https://www.grabner-instruments.com/knowledge-center"
+                class="has-submenu"
+                >KNOWLEDGE CENTER
+              </a>
+              <div class="has-sub-menu">
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/knowledge-center/articles"
+                      >Articles</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/knowledge-center/case-studies"
+                      >Case studies</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/knowledge-center/application-notes"
+                      >Application Notes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/knowledge-center/blog"
+                      >Blog</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a
+                href="https://www.grabner-instruments.com/contactus/sales-inquiry"
+                class="has-submenu"
+                >CONTACT US
+              </a>
+              <div class="has-sub-menu">
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/contactus/sales-inquiry"
+                      >Sales Inquiry</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.grabner-instruments.com/contactus/international-distributors"
+                      >International Distributors</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- container -->
+    </header>
+
+    <!---================== CONTENT ==========================-->
+    <main>
+      <div class="main-content container-fluid text-center">
+        <div class="parent">
+          <div
+            class="div1 content-box"
+            pardot-region="Title"
+            pardot-region-type="pardot"
+          >
+            <h1 class="content-heading">Newsletter</h1>
+            <h3 class="content-subheading">
+              Grabner Instruments Messtechnik GmbH - Vienna, Austria
+            </h3>
+            <hr class="line-break" />
+          </div>
+          <div class="div2 content-box">
+            <div class="left-section section col container">
+              <ul class="firstList">
+                <li class="left-section-all" pardot-region="Left Section Title">
+                  <span class="list-topic-1">In This Issue</span>
+                  <br />
+                  <span class="list-topic-2">Key highlights and updates</span>
+                  <hr class="line-break" style="border: 1px solid #fff" />
+                </li>
+                <li pardot-region="TOPIC-1">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section1')"
+                    class="list-link"
+                    >Topic 1</a
+                  >
+                </li>
+                <li pardot-region="TOPIC-2">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section2')"
+                    class="list-link"
+                    >Topic 2</a
+                  >
+                </li>
+                <li pardot-region="TOPIC-3">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section3')"
+                    class="list-link"
+                    >Topic 3</a
+                  >
+                </li>
+                <li pardot-region="TOPIC-4">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section4')"
+                    class="list-link"
+                    >Topic 4</a
+                  >
+                </li>
+                <li pardot-region="TOPIC-5">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section5')"
+                    class="list-link"
+                    >Topic 5</a
+                  >
+                </li>
+                <li pardot-region="TOPIC-6">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section6')"
+                    class="list-link"
+                    >Topic 6</a
+                  >
+                </li>
+                <li pardot-region="TOPIC-7">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section7')"
+                    class="list-link"
+                    >Topic 7</a
+                  >
+                </li>
+                <li pardot-region="TOPIC-8">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="scrollToSection('section8')"
+                    class="list-link"
+                    >Topic 8</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="div3 content-box"
+            pardot-region="Contact Us Section"
+            pardot-region-type="pardot"
+          >
+            3
+          </div>
+          <div
+            class="div4 content-box"
+            pardot-region="Content 1"
+            pardot-region-type="pardot"
+          >
+            4
+          </div>
+          <div
+            class="div5 content-box"
+            pardot-region="Content 2"
+            pardot-region-type="pardot"
+          >
+            5
+          </div>
+          <div
+            class="div6 content-box"
+            pardot-region="Content 3"
+            pardot-region-type="pardot"
+          >
+            6
+          </div>
+          <div
+            class="div7 content-box"
+            pardot-region="Content 4"
+            pardot-region-type="pardot"
+          >
+            7
+          </div>
+          <div
+            class="div8 content-box"
+            pardot-region="Content 5"
+            pardot-region-type="pardot"
+          >
+            8
+          </div>
+          <div
+            class="div9 content-box"
+            pardot-region="Content 6"
+            pardot-region-type="pardot"
+          >
+            9
+          </div>
+          <div
+            class="div10 content-box"
+            pardot-region="Content 7"
+            pardot-region-type="pardot"
+          >
+            10
+          </div>
+          <div
+            class="div11 content-box"
+            pardot-region="Content 8"
+            pardot-region-type="pardot"
+          >
+            11
+          </div>
+          <div
+            class="div12 content-box"
+            pardot-region="Content 9"
+            pardot-region-type="pardot"
+          >
+            12
+          </div>
+          <div
+            class="div13 content-box"
+            pardot-region="Content 10"
+            pardot-region-type="pardot"
+          >
+            13
+          </div>
+          <div
+            class="div14 content-box"
+            pardot-region="Content 11"
+            pardot-region-type="pardot"
+          >
+            14
+          </div>
+          <div
+            class="div15 content-box"
+            pardot-region="Content 12"
+            pardot-region-type="pardot"
+          >
+            15
+          </div>
+          <div
+            class="div16 content-box"
+            pardot-region="Content 13"
+            pardot-region-type="pardot"
+          >
+            16
+          </div>
+          <div
+            class="div17 content-box"
+            pardot-region="Content 14"
+            pardot-region-type="pardot"
+          >
+            17
+          </div>
+          <div
+            class="div18 content-box"
+            pardot-region="Content 15"
+            pardot-region-type="pardot"
+          >
+            18
+          </div>
+          <div
+            class="divlast content-box"
+            pardot-region="Additional Content"
+            pardot-region-type="pardot"
+          >
+            Extra
+          </div>
+        </div>
+      </div>
+    </main>
+    <!---================== CONTENT END ==========================-->
+    <footer>
+      <div class="footer-container-1-1">
+        <!-- Middle Column: Links -->
+
+        <div class="footer-container-1-1-links container-fluid">
+          <div class="footer-category-links">
+            <ul
+              style="list-style: none; padding: 0; margin: 0; line-height: 1.8"
+            >
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/products"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  ><strong>PRODUCTS</strong></a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/products/vapor-pressure"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Vapor Pressure</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/products/flashpoint"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Flashpoint</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/products/fuel-analysis"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Fuel Analysis</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/products/accessories"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Accessories and Software</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-category-links">
+            <ul
+              style="list-style: none; padding: 0; margin: 0; line-height: 1.8"
+            >
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/industries"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  ><strong>INDUSTRIES</strong></a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/industries/environment"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Environment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/industries/food-flavor-and-fragrances"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Food, Flavor and Fragrances</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/industries/lubricants-and-greases"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Lubricants and Greases</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/industries/oilandgas"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Oil and Gas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/industries/petrochemical-and-petroleum"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Petrochemical and Petroleum</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/industries/transportation-and-storage"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  >Transportation and Storage</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-category-links">
+            <ul
+              style="list-style: none; padding: 0; margin: 0; line-height: 1.8"
+            >
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/contactus/sales-inquiry"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  ><strong>CONTACT US</strong>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/aboutus/philosophy"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  ><strong>ABOUT US</strong>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/pressreleases/tradeshows-and-meetings"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  ><strong>NEWS AND EVENTS</strong>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/knowledge-center"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  ><strong>KNOWLEDGE CENTER</strong>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.grabner-instruments.com/contactus/international-distributors"
+                  style="color: #c1c1c1; text-decoration: none"
+                  onMouseOver="this.style.color='#139191 /*231F20*/'"
+                  onMouseOut="this.style.color='#C1C1C1'"
+                  ><strong>INTERNATIONAL DISTRIBUTORS</strong>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Grabner Contact List -->
+
+          <div class="footer-category-links">
+            <ul
+              style="list-style: none; padding: 0; margin: 0; line-height: 1.8"
+            >
+              <li>
+                <strong>GRABNER INSTRUMENTS MESSTECHNIK GmbH</strong><br />
+                Dr.-Otto-Neurath-Gasse 1,<br />
+                1220 Wien, Austria<br />
+                <a
+                  href="tel: +43 1 2821627"
+                  style="color: #c1c1c1; text-decoration: none"
+                  >+43 1 2821627</a
+                >
+              </li>
+              <!-- </ul> -->
+              <!-- </div> -->
+              <div class="social-icons-footer" style="text-align: left">
+                <!-- <ul> -->
+                <li>
+                  <a
+                    href="https://x.com/grabnerametek"
+                    style="margin-right: 10px; text-decoration: none"
+                  >
+                    <i
+                      class="bi bi-twitter-x"
+                      style="font-size: 25px; color: white"
+                      onMouseOver="this.style.color='#139191 /*231F20*/'"
+                      onMouseOut="this.style.color='#ffffff'"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-twitter-x"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                        />
+                      </svg> </i
+                  ></a>
+
+                  <a
+                    href="https://www.linkedin.com/company/grabner-instruments-messtechnik-gmbh"
+                    style="margin-right: 15px"
+                    ><i
+                      class="fa fa-linkedin"
+                      aria-hidden="true"
+                      style="font-size: 22px; color: white"
+                      onMouseOver="this.style.color='#139191 /*231F20*/'"
+                      onMouseOut="this.style.color='#ffffff'"
+                    ></i
+                  ></a>
+
+                  <a
+                    href="https://www.youtube.com/user/GRABNERXP"
+                    style="margin-right: 15px"
+                  >
+                    <i
+                      class="fa fa-youtube-play"
+                      style="font-size: 22px; color: white"
+                      onMouseOver="this.style.color='#139191 /*231F20*/'"
+                      onMouseOut="this.style.color='#ffffff'"
+                    ></i
+                  ></a>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-navigation-2">
+          <a
+            href="https://www.grabner-instruments.com/do-not-sell-share"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Do Not Sell or Share My Personal Information</a
+          >
+
+          <a
+            href="https://www.grabner-instruments.com/privacy"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*7AC143*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Privacy Policy</a
+          >
+
+          <a
+            href="https://www.ametek.com/cookies"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Cookie Policy</a
+          >
+
+          <a
+            href="https://www.ametek.com/terms-of-use"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Terms of Use</a
+          >
+
+          <a
+            href="https://www.grabner-instruments.com/unsubscribeform"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Unsubscribe</a
+          >
+
+          <a
+            href="https://www.grabner-instruments.com/subscribeform"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Subscribe</a
+          >
+
+          <a
+            href="https://www.grabner-instruments.com/aboutus/legalinformation"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Legal Information</a
+          >
+          <a
+            href="https://www.grabner-instruments.com/aboutus/imprint"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Imprint</a
+          >
+          <a
+            href="https://www.grabner-instruments.com/salesandsupport/quality/iso-certifications"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >ISO Certification</a
+          >
+          <a
+            href="https://www.grabner-instruments.com/salesandsupport/training/fluid-management-academy"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Training</a
+          >
+
+          <a
+            href="https://www.grabner-instruments.com/salesandsupport/us-technical-support/service-request"
+            style="color: #c1c1c1; text-decoration: none; margin: 0 5px"
+            onMouseOver="this.style.color='#139191 /*231F20*/'"
+            onMouseOut="this.style.color='#C1C1C1'"
+            >Technical Support</a
+          >
+        </div>
+
+        <div
+          style="
+            margin-top: 20px;
+            text-align: center;
+            padding-top: 10px;
+            margin-right: 100px;
+            margin-left: 100px;
+          "
+        >
+          &copy; 2025 AMETEK Inc. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function scrollToSection(targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+          console.log(`Scrolling to ${targetId}`);
+        } else {
+          console.error(`Element with ID "${targetId}" not found.`);
+        }
+      }
+
+      window.onload = function () {
+        let hasAnimated = false; // Flag to ensure the animation runs only once
+
+        function isElementInViewport(el) {
+          const rect = el.getBoundingClientRect();
+          const windowHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          console.log(rect.top, "View Check", window.outerHeight, rect.bottom);
+          return (
+            rect.top <= window.outerHeight && // Top of the element is within the viewport
+            rect.bottom >= 0 // Bottom of the element is within the viewport
+          );
+        }
+
+        function handleScroll(targetId) {
+          console.log("Handling Scroll...");
+          const target = document.getElementById(targetId);
+          if (!hasAnimated && target && isElementInViewport(target)) {
+            target.style.opacity = "1"; // Ensure opacity is reset
+            hasAnimated = true; // Set the flag to true so the animation runs only once
+            target.classList.add("start-animation"); // Add a class to start animation
+          }
+        }
+
+        // Example usage for specific section
+        const targetId = "target-section"; // Replace this with the desired ID
+        handleScroll(targetId);
+
+        window.addEventListener("scroll", () => handleScroll(targetId));
+      };
+    </script>
+    <script>
+      function scrollHandler() {
+        var element = document.getElementById("header");
+
+        var distanceToTop =
+          window.pageYOffset + element.getBoundingClientRect().top;
+        var elementHeight = element.offsetHeight;
+        var scrollTop = document.documentElement.scrollTop;
+
+        var opacity = 1;
+
+        if (scrollTop > distanceToTop) {
+          opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
+        }
+
+        if (opacity >= 0) {
+          element.style.opacity = opacity;
+        }
+      }
+
+      window.addEventListener("scroll", scrollHandler);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="http://go.pardot.com" />
+    <meta charset="utf-8" />
+    <meta name="description" content="%%description%%" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Spectro Scientific Newsletter</title>
+    <link href="https://fonts.googleapis.com/css?family=roboto" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900display=swap" rel="stylesheet"/>
+    <link href="https://fonts.cdnfonts.com/css/universalis-adf-std"rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/univers-next-pro-extended" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/universal-condensed" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+      /* --------------------------------------------------------------
+            FORM STYLES
+        ----------------------------------------------------------------- */
+
+      /* Border-box box model FTW! */
+      #pardot-form,
+      #pardot-form *,
+      #pardot-form *:before,
+      #pardot-form *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      /* Override form margin and padding set in the default stylesheet. Inherit font and color from page. */
+      #pardot-form {
+        margin: 0;
+        padding: 0;
+        font: inherit;
+        color: inherit;
+      }
+
+      /* Override form field wrapper margin and padding set in the default stylesheet. */
+      #pardot-form .form-field,
+      #pardot-form .submit {
+        margin: 15px 0 15px 0;
+        padding: 0;
+      }
+
+      /* Remove top margin from first from field wrapper. */
+      #pardot-form .form-field:first-child {
+        margin-top: 0;
+      }
+
+      /* Set default input style. */
+      #pardot-form input {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: #2c3e50;
+        font-size: 14px;
+        padding: 7px 15px;
+        width: 100%;
+      }
+
+      /* When labels are not floated left, set width on text inputs, textareas, and selects to 100%. */
+      #pardot-form input.text,
+      #pardot-form input.date,
+      #pardot-form textarea,
+      #pardot-form select {
+        width: 100%;
+        font-family: inherit;
+        color: inherit;
+      }
+
+      /* When labels are floated left, set width on field labels to a percentage of available width. In browsers that support calc(), use static label width instead and the form field will consume the remaining width. */
+      #pardot-form.label-left .field-label {
+        width: 35%;
+        width: calc(115px);
+      }
+
+      /* When labels are floated left, set width on text inputs, textareas, and selects to a percentage. In supported browsers, set width to 100% minus the width of the label instead. */
+      #pardot-form.label-left input.text,
+      #pardot-form.label-left input.date,
+      #pardot-form.label-left textarea,
+      #pardot-form.label-left select {
+        width: 65%;
+        width: calc(100% - 115px);
+      }
+
+      /* When labels are floated left, indent supporting form elements by the same amount as the field label. */
+      #pardot-form.label-left span.value,
+      #pardot-form.label-left .description,
+      #pardot-form.label-left .no-label > *,
+      #pardot-form.label-left .submit,
+      #pardot-form.label-left .error.no-label {
+        margin-left: 35%;
+        margin-left: calc(115px);
+      }
+
+      /* Remove unnecessary left padding on required radio/checkbox field labels when label alignment is set to above and the required symbol is set to default in form styling options. */
+      #pardot-form label.inline {
+        padding-left: 0;
+      }
+
+      /* Backup styles in case padding is added to text inputs. */
+      #pardot-form input.date {
+        padding-left: 20px;
+        background-position: left center;
+      }
+
+      #pardot-form .submit input {
+        background-color: #337ab7;
+        color: #fff;
+      }
+
+      /* --------------------------------------------------------------
+            TEMPLATE DETAILS
+        ----------------------------------------------------------------- */
+      body {
+        font-family: "Univers Next Pro Extended 400", sans-serif;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .header {
+        display: inline-flex; /* Use flexbox to align items */
+        align-items: flex-end; /* Vertically center the content */
+        justify-content: space-between; /* Align content to the left */
+        flex-direction: row;
+        border-bottom: 2px solid rgb(217, 225, 228);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+        border-radius: 10px;
+        flex-wrap: wrap;
+        align-content: center;
+        width: 100%;
+      }
+
+      .header img {
+        max-width: 550px; /* Restrict the image size */
+        margin-left: 230px; /* Center the logo within the space */
+      }
+
+      .social-icons h2 {
+        display: initial;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #7abc45;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .social-icons .fa {
+        padding: 10px;
+        font-size: 30px;
+        width: 50px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 40px;
+      }
+
+      .social-icons .fa:hover {
+        opacity: 0.7;
+      }
+      .social-icons .fa-linkedin {
+        background: #007bb5;
+        color: white;
+      }
+      .social-icons .fa-youtube-play {
+        background: #bb0000;
+        color: white;
+      }
+
+      .hover-underline {
+        position: relative;
+      }
+
+      .hover-underline::after,
+      .hover-underline::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, #5c2c8b, #7abc45);
+        bottom: -5px;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease-out;
+      }
+
+      .hover-underline::before {
+        top: -5px;
+        transform-origin: left;
+      }
+
+      .hover-underline:hover::after,
+      .hover-underline:hover::before {
+        transform: scaleX(1);
+      }
+
+      /*# Hero Section-------------------
+      -------------------------------------------*/
+      .hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero img {
+  position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+        z-index: 1;
+        opacity: 0.8;
+        padding: 20px;
+        border-radius: 50px;
+        box-shadow: 3px 7px 10px rgba(0, 0, 0, 0.2);
+      -webkit-filter: blur(1px);
+}
+
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 3;
+      }
+
+      .hero h2 {
+        /* color:color-mix(in oklab, #FFF,#000000, transparent 80%); */
+        margin: 0;
+        font-size: 48px;
+        font-weight: 700;
+        text-transform: uppercase;
+        background: -webkit-linear-gradient(#000000, #5c2c8b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        color: color-mix(in oklab, #Fff, #000000 80%);;
+        margin: 10px 0 0 0;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .hero .btn-get-started {
+        background: #5c2c8b;
+        color: #fff;
+        font-weight: 300;
+        font-size: 14px;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 10px 30px;
+        border-radius: 4px;
+        transition: 0.3s;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      .hero .btn-get-started:hover {
+        background: color-mix(in oklab, #5C2C8B, #000000 25%);
+      }
+
+      .hero .btn-watch-video {
+        font-size: 16px;
+        transition: 0.5s;
+        margin-left: 25px;
+        font-weight: 400;
+        /* color: #000000; */
+      }
+
+      .hero .btn-watch-video i {
+        color: #FFFFFF;
+        font-size: 32px;
+        transition: 0.3s;
+        line-height: 0;
+        margin-right: 8px;
+      }
+
+      /* .hero .btn-watch-video:hover { 
+        color: color-mix(in oklab, #FFFFFF, #000000 25%);
+      }*/
+
+      .hero .btn-watch-video:hover i {
+       color: color-mix(in oklab, #FFFFFF, #000000 25%);
+      }
+
+
+      /*.OrangeImage {
+        position: relative;
+        top: 117px;
+        right: -404px;
+      }*/
+      /* Center the logo */
+      .logo {
+        text-align: center;
+      }
+
+      /* Images do not extend containers */
+      img {
+        max-width: 100%;
+      }
+      table img {
+        width: 100%;
+        max-width: 150px !important;
+      }
+
+      /* Grey BG */
+      .grey {
+        background-color: #eee;
+      }
+
+      /* Enable strong control over editable table cell widths */
+      table.editable-table {
+        table-layout: fixed;
+        width: 100%;
+      }
+
+      /* Set default editable table cell spacing & widths */
+      table.editable-table.3col td {
+        padding: 0px 15px;
+        width: 33%;
+      }
+      table.editable-table.2col td {
+        padding: 0px 15px;
+        width: 50%;
+      }
+
+      /* --------------------------------------------------------------
+            FOOTER
+        ----------------------------------------------------------------- */
+
+      footer {
+       /* background-color: #f6f6f6;*/
+        padding: 30px 0;
+        /* font-family: "Univers Next Pro Extended 400", sans-serif; */
+        background-color: #0078ae;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        min-height: fit-content;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 900px; /* Ensures the footer container has a defined width */
+        margin: 0 auto;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: nowrap; /* Ensures the links are next to each other */
+        gap: 20px; /* Adds a small gap between the two sections */
+        text-align: left;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 7px;
+        width: 135px;
+      }
+
+      .footer-links a {
+        text-decoration: none;
+        color: #0c5394;
+
+        font-size: 14px;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-social {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Centers the social media icons */
+        width: 100%; /* Ensures the social media section spans the full width */
+      }
+
+      .footer-social a img {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
+
+      /* --------------------------------------------------------------
+            SPACING
+        ----------------------------------------------------------------- */
+
+      /* make element edge to edge */
+      .flush {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      /* vertical padding */
+      .vpadding {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      /* side padding only */
+      .hpadding {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      /* top padding only */
+      .tpadding {
+        padding-top: 20px;
+        padding-bottom: 0px;
+      }
+
+      /* bottom padding only */
+      .bpadding {
+        padding-top: 0px;
+        padding-bottom: 20px;
+      }
+
+      /* --------------------------------------------------------------
+            SOCIAL
+        ----------------------------------------------------------------- */
+
+      /* Social list spacing */
+      .social-list {
+        padding-left: 5px;
+      }
+
+      /* Social list display next to one another */
+      .social-list li,
+      .social-list {
+        display: inline;
+      }
+
+      /* Disable underlines on image link hover */
+      .social-list a:hover {
+        text-decoration: none;
+      }
+
+      /* Share button image specific style */
+      #share-buttons img {
+        width: 20px;
+        border: 0;
+        box-shadow: 0;
+        display: inline;
+      }
+
+      /* --------------------------------------------------------------
+            RESPONSIVE
+        ----------------------------------------------------------------- */
+      /* xs */
+      @media (max-width: 767px) {
+        .pull-right {
+          float: none !important;
+          text-align: center;
+        }
+        .social {
+          text-align: center;
+        }
+        .edit-image {
+          width: 290px;
+          padding-bottom: 5px;
+        }
+      }
+      /* sm */
+      @media (max-width: 768px) {
+        #pardot-form.label-left .field-label {
+          width: 100%;
+          text-align: left;
+        }
+        #pardot-form.label-left input.text,
+        #pardot-form.label-left input.date,
+        #pardot-form.label-left textarea,
+        #pardot-form.label-left select {
+          width: 100%;
+        }
+        #pardot-form.label-left span.value,
+        #pardot-form.label-left .description,
+        #pardot-form.label-left .no-label > *,
+        #pardot-form.label-left .submit,
+        #pardot-form.label-left .error.no-label {
+          width: 100%;
+        }
+        #pardot-form.label-left span.value,
+        #pardot-form.label-left .description,
+        #pardot-form.label-left .no-label > *,
+        #pardot-form.label-left .submit,
+        #pardot-form.label-left .error.no-label {
+          margin-left: 0;
+        }
+        form.form p {
+          margin-left: 0px !important;
+          padding-left: 0px !important;
+        }
+        table.editable-table td {
+          display: block;
+          width: 100% !important;
+        }
+      }
+      /* md */
+      @media (max-width: 992px) {
+      }
+      /* lg */
+      @media (min-width: 1200px) {
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron container-fluid hover-underline">
+      <div class="header">
+        <div class="col-xs-12 logo">
+          <a href="https://www.spectrosci.com/" style="display: block">
+            <img
+              src="https://storage.pardot.com/1083382/1733375241g8VCsj0c/Spectro_Logo.png"
+              alt="Spectro Scientific Logo"
+              width="550"
+              placehold="logo"
+              pardot-region="logo"
+              pardot-region-type="image"
+            />
+          </a>
+          <!---- <img
+            class="OrangeImage"
+            src="https://go.spectrosci.com/l/1083382/2024-12-06/2vnkkq/1083382/17334776947bqGuYjF/orange_bullet_1.webp"
+          /> -->
+        </div>
+
+        <div class="col-xs-12 social-icons">
+          <h2>Follow Us:</h2>
+          <a
+            href="https://www.linkedin.com/company/spectro-inc/"
+            class="fa fa-linkedin"
+          ></a>
+          <a
+            href="http://www.youtube.com/user/SpectroScientific"
+            class="fa fa-youtube-play"
+          ></a>
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+
+    <br />
+    <!-- Title Text 
+    <div class="col-xs-12 text-center">
+      <div class="editable">
+        <h1 pardot-region="title">Our Best Tips Revealed</h1>
+      </div>
+      <div class="editable">
+        <h2 class="tagline" pardot-region="tagline">
+          Eight Tips Only Ignite Power Users Would Know
+        </h2>
+      </div>
+    </div>
+
+
+   <!-- Hero Section -->
+   <section id="hero" class="hero section dark-background">
+    <div>
+    <img src="https://storage.pardot.com/1083382/1740077908jA2C4yyb/Global_Reps_Gear.jpg" alt="" data-aos="fade-in" />
+    </div>
+    <div class="container d-flex flex-column align-items-center">
+      <h2 pardot-region="hero_title">SPECTRO SCIENTIFIC.</h2>
+      <p pardot-region="hero_content">
+       
+      </p>
+      <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+        <a href="#" class="btn btn-get-started">Get Started</a>
+        <a
+          href="https://youtu.be/Mib0_MwLga0?list=PLAuNJoihWs2IaeVrKKRgW7Wa1Ekuib2Rg"
+          class="btn btn-outline-dark btn-watch-video d-flex align-items-center"
+          ><i class=" bi bi-play-circle"></i><span>Watch Video</span></a
+        >
+      </div>
+    </div>
+  </section>
+  <!-- /Hero Section -->
+
+  
+   <!--Video Section
+    <div class="container">
+      <div class="row vpadding">
+        <div class="col-md-8">
+          <div class="video text-center">
+            <div class="editable" pardot-region="video">
+              <img
+                src="http://placehold.it/750x400?text=video"
+                alt="placeholder video"
+              />
+              <p>&nbsp;</p>
+            </div>
+          </div>
+          <div class="editable" pardot-region="main-content">
+            <h3>
+              Learn how to automate your tasks and slash your to-do list in
+              half.
+            </h3>
+            <p>
+              LenoxSoft put a call out to our power use community and asked:
+              "Share some tips for saving time in your Ignite platform
+              workflows?"
+            </p>
+            <p>
+              Please join us for our upcoming webinar featuring our esteemed
+              panel of Ignite power users from across industry verticals. Can't
+              make the date? Register and we'll be sure to send you the live
+              recording and Q&amp;A session for you to review later.
+            </p>
+            <br />
+          </div>
+        </div>-->
+        <!-- div-md-8 
+        <div class="col-md-4">
+          <div class="editable">%%content%%</div>
+        </div>
+      </div>-->
+      <!-- row vpadding 
+
+      <div class="block-one vpadding">
+        <div class="" pardot-region="block_one_table">
+          <table class="editable-table 2col">
+            <tr>
+              <td colspan="2" class="vpadding">
+                <p><strong>Our webinar panellists include:</strong></p>
+              </td>
+            </tr>
+            <tr>
+              <td class="vpadding">
+                <div class="col-sm-2 bpadding" style="text-align: center">
+                  <img
+                    src="/images/placeholder.php?width=95&amp;height=95"
+                    alt="placeholder image"
+                  />
+                </div>
+                <div class="col-sm-10">
+                  <strong
+                    >Corby Davies, Senior Strategist, Aperture Labs</strong
+                  >
+                  <p>
+                    Corby has been using LenoxSoft Ignite for 3 years and
+                    recently began publishing a blog about user tips.
+                  </p>
+                </div>
+                <div class="row"></div>
+              </td>
+              <td class="vpadding">
+                <div class="col-sm-2 bpadding" style="text-align: center">
+                  <img
+                    src="/images/placeholder.php?width=95&amp;height=95"
+                    alt="placeholder image"
+                  />
+                </div>-->
+                <!-- col-xs-2 
+                <div class="col-sm-10">
+                  <strong
+                    >Corby Davies, Senior Strategist, Aperture Labs</strong
+                  >
+                  <p>
+                    Corby has been using LenoxSoft Ignite for 3 years and
+                    recently began publishing a blog about user tips.
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><hr /></td>
+            </tr>
+            <tr>
+              <td class="vpadding">
+                <div class="col-sm-2 bpadding" style="text-align: center">
+                  <img
+                    src="/images/placeholder.php?width=95&amp;height=95"
+                    alt="placeholder image"
+                  />
+                </div>
+                <div class="col-sm-10">
+                  <strong>Paul Escamilla, Product Manager, Initech</strong>
+                  <p>
+                    When not using Ignite you can find Paul speaking at his
+                    local Ignite User Group meetups.
+                  </p>
+                </div>
+                <div class="row"></div>
+              </td>
+              <td class="vpadding">
+                <div class="col-sm-2 bpadding" style="text-align: center">
+                  <img
+                    src="/images/placeholder.php?width=95&amp;height=95"
+                    alt="placeholder image"
+                  />
+                </div>-->
+                <!-- col-xs-2 
+                <div class="col-sm-10">
+                  <strong
+                    >Alina Fernandez, Project Manager, Mr. Fusion
+                    Reactors</strong
+                  >
+                  <p>
+                    Alina works cross-functionally with her organization to
+                    ensure Ignite is customized to her company's specific needs.
+                  </p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><hr /></td>
+            </tr>
+            <tr>
+              <td class="vpadding">
+                <div class="col-sm-2 bpadding" style="text-align: center">
+                  <img
+                    src="/images/placeholder.php?width=95&amp;height=95"
+                    alt="placeholder image"
+                  />
+                </div>
+                <div class="col-sm-10">
+                  <strong>Anna Sepp, Customer Success, LenoxSoft</strong>
+                  <p>
+                    Anna heads up the European division of Ignite's customer
+                    success division.
+                  </p>
+                </div>
+                <div class="row"></div>
+              </td>
+              <td class="vpadding">
+                <div class="col-sm-2 bpadding" style="text-align: center">
+                  <img
+                    src="/images/placeholder.php?width=95&amp;height=95"
+                    alt="placeholder image"
+                  />
+                </div>-->
+                <!-- col-xs-2 
+                <div class="col-sm-10">
+                  <strong>Lukas Hurtgen, HR Manager, Flint Tropics</strong>
+                  <p>
+                    Lukas engages his corporate teams through collaboration and
+                    new innovative ways of working with the Ignite platform.
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </table>-->
+          <!-- table -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- block-one vpadding -->
+    </div>
+    </main>
+
+    <br />
+
+
+<footer>
+  <div  style="
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          flex-direction: row;
+          gap: 20px;
+          text-align: left;
+          align-items: stretch;">
+
+
+        <!-- Left Column: Logo -->
+
+        <div style="margin-left: 100px">
+          <img
+            alt="Spectro Scientific Logo"
+            src="https://storage.pardot.com/1083382/1733809305KjIv43lq/spectroscientific_logo_white_new.png"
+            style="
+              height: 120px;
+              display: block;
+              margin-bottom: 20px;
+              margin-left: 20px;
+            "
+          />
+        </div>
+        <!-- Middle Column: Links -->
+
+        <div style="margin-left: 100px">
+          <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8">
+            <li>
+              <a
+                href="https://www.spectrosci.com/product"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Product</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/services"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Services
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://store.spectrosci.com/"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Consumables
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://store.spectrosci.com/"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Accessories
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://store.spectrosci.com/"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >E-Store</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div style="margin-left: 5px">
+          <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8">
+            <li>
+              <a
+                href="https://www.spectrosci.com/company"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Company
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/knowledge-center"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Knowledge
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/industries"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Industries</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/services/training-courses"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Training
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/news/news"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >News
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Contact Info -->
+
+        <div style="margin-right: 100px">
+          <p style="margin: 0; line-height: 1.8">
+            <strong>Spectro Scientific</strong><br />
+            One Executive Drive, Suite 101<br />
+            Chelmsford, MA 01824-2563<br />
+            <a
+              href="tel:9784860123"
+              style="color: #ffffff; text-decoration: none"
+              >978.486.0123</a
+            >
+          </p>
+
+          <!-- Right Column: Social Media -->
+
+          <br />
+          <div class="social-icons-footer" style="text-align: left">
+            <a
+              href="https://www.linkedin.com/company/spectro-inc/"
+              style="margin-right: 15px"
+              ><i
+                class="fa fa-linkedin"
+                style="font-size: 25px; color: white"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+              ></i
+            ></a>
+            <a href="https://x.com/SpectroSci" style="margin-right: 15px"
+              ><i
+                class="fa fa-twitter"
+                style="font-size: 25px; color: white"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+              ></i
+            ></a>
+            <a href="https://www.youtube.com/user/SpectroScientific">
+              <i
+                class="fa fa-youtube-play"
+                style="font-size: 25px; color: white"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+              ></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Section: Footer Links -->
+
+      <div
+        style="
+          margin-top: 20px;
+          text-align: center;
+          padding-top: 10px;
+          margin-right: 100px;
+          margin-left: 100px;
+        "
+      >
+        &copy; 2021-2024 Ametek Spectro Scientific |
+        <a
+          href="https://www.spectrosci.com/-/media/project/ameteksxa/spectroscientific/ametekspectro/shared/iso-cert/iso-9001-2015.pdf?la=en&amp;revision=54b357f7-83e9-4316-8631-fb5fa4d8f92b&amp;hash=FCFE5ADEB74D1AC04991A28BEC23EEAB"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Certified to ISO 9001:2015</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/privacy"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Privacy Policy</a
+        >
+        |
+        <a
+          href="https://www.ametek.com/cookies"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Cookie Policy</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/forms/unsubscribeformpage"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Unsubscribe</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/do-not-sell-share"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Do Not Sell or Share My Personal Information</a
+        >
+        |
+        <a
+          href="https://www.ametek.com/terms-of-use"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Terms of Use</a
+        >
+      </div>
+    </footer>
+    
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function scrollToSection(targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+          console.log(`Scrolling to ${targetId}`);
+        } else {
+          console.error(`Element with ID "${targetId}" not found.`);
+        }
+      }
+
+      window.onload = function () {
+        let hasAnimated = false; // Flag to ensure the animation runs only once
+
+        function isElementInViewport(el) {
+          const rect = el.getBoundingClientRect();
+          const windowHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          console.log(rect.top, "View Check", window.outerHeight, rect.bottom);
+          return (
+            rect.top <= window.outerHeight && // Top of the element is within the viewport
+            rect.bottom >= 0 // Bottom of the element is within the viewport
+          );
+        }
+
+        function handleScroll(targetId) {
+          console.log("Handling Scroll...");
+          const target = document.getElementById(targetId);
+          if (!hasAnimated && target && isElementInViewport(target)) {
+            target.style.opacity = "1"; // Ensure opacity is reset
+            hasAnimated = true; // Set the flag to true so the animation runs only once
+            target.classList.add("start-animation"); // Add a class to start animation
+          }
+        }
+
+        // Example usage for specific section
+        const targetId = "target-section"; // Replace this with the desired ID
+        handleScroll(targetId);
+
+        window.addEventListener("scroll", () => handleScroll(targetId));
+      };
+    </script>
+    <script>
+      /* --------------------------------------------------------------
+            FUNCTIONS
+        ----------------------------------------------------------------- */
+      /**
+       * Replace all occurences of https://simplesharebuttons.com in the
+       * social sharing list with the url of this page, and all occurrence
+       * of "Check this out" with the page title
+       */
+      $(".social-list a").each(function () {
+        // get values
+        var thisPage = window.location.href;
+        var url = $(this).attr("href");
+
+        // get title of this page
+        var title = $(document).find("title").text();
+
+        // replace values
+        url = url.replace("http://www.pardot.com", thisPage);
+        url = url.replace("template-title", title);
+
+        //update value of the link anchor
+        $(this).attr("href", url);
+      });
+
+      /**
+       * Pardot label alignment fix
+       */
+      pardot.$(function () {
+        var $ = window.pardot.$;
+        // Add label-left class to the <form> if label alignment is set to Default or Left in form styling
+        var $labelAlignment = $("#pardot-form .field-label").css("float");
+        if ($labelAlignment == "left") {
+          $("#pardot-form").addClass("label-left");
+        }
+      });
+    </script>
+    
+  </body>
+</html>
