@@ -1,0 +1,1429 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="https://go.spectrosci.com" />
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="description"
+      content="Spectro Scientific Newsletter - Third Quarter 2024"
+    />
+    <title>The Monitor - Third Quarter 2024 Newsletter</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=roboto"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.cdnfonts.com/css/universalis-adf-std"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/univers-next-pro-extended"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/universal-condensed"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Bootstrap CSS - Adithya-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+
+    <script>
+      function scrollToSection(targetId) {
+        const targetElement = document.getElementById(targetId)
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" })
+          console.log(`Scrolling to ${targetId}`)
+        } else {
+          console.error(`Element with ID "${targetId}" not found.`)
+        }
+      }
+
+      window.onload = function () {
+        let hasAnimated = false // Flag to ensure the animation runs only once
+
+        function isElementInViewport(el) {
+          const rect = el.getBoundingClientRect()
+          const windowHeight =
+            window.innerHeight || document.documentElement.clientHeight
+          console.log(rect.top, "View Check", window.outerHeight, rect.bottom)
+          return (
+            rect.top <= window.outerHeight && // Top of the element is within the viewport
+            rect.bottom >= 0 // Bottom of the element is within the viewport
+          )
+        }
+
+        function handleScroll(targetId) {
+          console.log("Handling Scroll...")
+          const target = document.getElementById(targetId)
+          if (!hasAnimated && target && isElementInViewport(target)) {
+            target.style.opacity = "1" // Ensure opacity is reset
+            hasAnimated = true // Set the flag to true so the animation runs only once
+            target.classList.add("start-animation") // Add a class to start animation
+          }
+        }
+
+        // Example usage for specific section
+        const targetId = "target-section" // Replace this with the desired ID
+        handleScroll(targetId)
+
+        window.addEventListener("scroll", () => handleScroll(targetId))
+      }
+    </script>
+
+    <style>
+
+
+
+
+            body {
+         font-family: 'Univers Next Pro Extended 400', sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #fff;
+      }
+
+      .header {
+          display: flex; /* Use flexbox to align items */
+          justify-content: flex-start; /* Align content to the left */
+          align-items: center; /* Vertically center the content */
+          padding: 40px 20px; /* Add some padding for space around the header */
+          border-bottom: 2px solid rgb(217, 225, 228);
+          box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+      }
+
+      .header img {
+          max-width: 350px; /* Restrict the image size */
+          margin-left: 230px; /* Center the logo within the space */
+      }
+
+      .newsletter-title {
+          background-color: #006fa0;
+          color: white;
+          text-align: center;
+          height: 120px; /* Set fixed height */
+          display: flex; /* Use Flexbox to center content vertically */
+          align-items: center; /* Vertically align text */
+          justify-content: center; /* Horizontally align text */
+          font-size: 25px; /* Adjust font size */
+          font-weight: 600; /* Make text slightly bolder */
+          margin: 0 auto; /* Remove margin to eliminate space */
+          max-width: 950px; /* Maintain width limit */
+          padding: 0; /* Remove padding for better height control */
+          margin-top:30px;
+      }
+
+      .content {
+          display: flex; /* Flexbox for side-by-side layout */
+          max-width: 930px; /* Adjust the container width */
+          margin: 0 auto; /* Remove the margin to center the content and eliminate space */
+          background: white;
+
+          gap: 20px; /* Space between sections */
+          flex-wrap: wrap; /* Allow sections to wrap when screen size is smaller */
+      }
+
+      .section {
+          flex: 0 0 200px; /* Fixed width for the first section */
+          background-color: #fff;
+          padding: 15px;
+      }
+
+      .section h2 {
+          color: black;
+          margin-bottom: 10px;
+      }
+
+      .section2 {
+          flex: 0 0 650px; /* Fixed width for the second section */
+          background-color: #ffff;
+          padding: 15px;
+      }
+
+      .section2 h2 {
+          color: #0077b6;
+          margin-bottom: 10px;
+          text-align: center;
+      }
+
+      .insights-banner {
+          background-color: #d71921;
+          color: white;
+          width:625px;
+          text-align: center;
+      }
+
+      .insights-banner img {
+          max-width: 100px;
+          border-radius: 50%;
+          margin-bottom: 10px;
+      }
+
+      .insights-banner h3 {
+          margin: 10px 0;
+      }
+
+      .in-this-issue ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      .in-this-issue ul li {
+          margin-bottom: 10px;
+      }
+
+      .in-this-issue a {
+          text-decoration: none;
+          color: #0077b6;
+      }
+
+      .in-this-issue a:hover {
+          text-decoration: underline;
+      }
+
+      .Section2IMG {
+          height: auto;
+          max-width: 100%;
+          width: 612px;
+      }
+
+      .Section1IMG{
+           height: auto;
+          max-width: 100%;
+          width: 195px;
+      }
+
+      }
+
+       ul {
+          list-style: none; /* Optional: Removes default bullet points */
+          padding: 0; /* Optional: Removes default padding */
+      }
+
+        ul li {
+          margin-bottom: 10px; /* Adds space between list items */
+      }
+
+      .list-link {
+          font-weight: bold; /* Makes the text bold */
+          font-size: 16px; /* Sets the font size */
+          color: #0c5394; /* Sets the desired color */
+          text-decoration: none; /* Ensures no underline is shown */
+          font-style: italic;
+      }
+
+      .list-link:hover {
+          text-decoration: none; /* Ensures no underline even on hover */
+          color: #0c5394; /* Keeps the same color on hover */
+      }
+
+      footer {
+          background-color: #F6F6F6;
+          padding: 30px 0;
+         font-family: 'Univers Next Pro Extended 400', sans-serif;
+      }
+
+      .footer-container {
+          display: flex;
+          justify-content: space-between;
+          max-width: 900px; /* Ensures the footer container has a defined width */
+          margin: 0 auto;
+          align-items: flex-start;
+      }
+
+      .footer-links {
+          display: flex;
+          flex-wrap: nowrap; /* Ensures the links are next to each other */
+          gap: 20px; /* Adds a small gap between the two sections */
+          text-align: left;
+      }
+
+      .footer-links ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      .footer-links ul li {
+          margin-bottom: 7px;
+          width: 135px;
+      }
+
+      .footer-links a {
+          text-decoration: none;
+          color: #0c5394;
+
+          font-size: 14px;
+      }
+
+      .footer-links a:hover {
+          text-decoration: underline;
+      }
+
+      .footer-social {
+          display: flex;
+          align-items: center;
+          justify-content: center; /* Centers the social media icons */
+          width: 100%; /* Ensures the social media section spans the full width */
+      }
+
+      .footer-social a img {
+          width: 30px;
+          height: 30px;
+          margin-left: 10px;
+      }
+
+
+      .custom-line {
+          border: none;              /* Removes default border */
+          border-top: 1px solid #CCCCCC; /* Creates a solid line of 1px width */
+          max-width: 630px;          /* Limits the width to 630px */
+          margin: 0 auto;            /* Centers the line horizontally */
+      }
+
+
+
+      .custom-line1 {
+          border: none;              /* Removes default border */
+          border-top: 1px solid #CCCCCC; /* Creates a solid line of 1px width */
+          max-width: 195px;          /* Limits the width to 630px */
+          margin: 0 auto;            /* Centers the line horizontally */
+      }
+
+
+
+      .benefit-list {
+          list-style-type: decimal; /* Use numbered list style */
+          color: black;              /* Text color */
+          font-family: 'Univers Next Pro Extended 400', sans-serif;
+          font-size: 16px;          /* Set font size */
+      }
+
+      .benefit-list li {
+          color: black;           /* Color for the list items */
+          margin-bottom: 8px;       /* Space between items */
+      }
+
+
+      .custom-bullets {
+          list-style-type: disc; /* Default round bullet style */
+          padding-left: 20px; /* Adds space to the left */
+      }
+
+      .custom-bullets li {
+          font-size: 16px; /* Font size */
+          color: black /* Text color */
+      }
+
+
+      .firstList {
+          list-style: None; /* Default round bullet style */
+          padding-left: 20px; /* Adds space to the left */
+      }
+
+      .firstList li {
+          font-size: 16px; /* Font size */
+          color: black /* Text color */
+      }
+
+      .social-icons {
+          display: flex;
+          gap: 20px;
+
+          justify-content: center;
+      }
+
+      .social-icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 24px;
+          color: white;
+          text-decoration: none;
+
+      }
+
+      .linkedin {
+          background-color: #0A66C2; /* LinkedIn Blue */
+      }
+
+      .youtube {
+          background-color: #FF0000; /* YouTube Red */
+      }
+
+      .social-icon:hover {
+          opacity: 0.8;
+      }
+
+      .contact-button {
+          background-color: #4CAF50; /* Green background */
+          color: white; /* White text */
+          font-size: 18px; /* Font size */
+          border: none; /* Remove borders */
+          border-radius: 10px; /* Rounded corners */
+          padding: 10px 20px; /* Padding inside the button */
+          cursor: pointer; /* Pointer cursor on hover */
+          text-align: center; /* Center the text */
+          display: inline-block; /* Inline-block for proper sizing */
+          transition: background-color 0.3s ease; /* Smooth hover effect */
+           text-decoration: none;
+      }
+
+      /* Hover effect */
+      .contact-button:hover {
+          background-color: #45a049; /* Darker green on hover */
+      }
+
+      .FooterText{
+          margin-left:300px;
+              font-size: 12px;
+          line-height: 16px;
+          color: #333
+      }
+
+      .OrangeImage{
+              position: relative;
+         top: 117px;
+          right: -404px;
+      }
+
+
+
+
+      /* Media Queries for Responsiveness */
+      @media (max-width: 1200px) {
+          .header img {
+              margin-left: 100px; /* Adjust logo margin for smaller screens */
+          }
+
+          .newsletter-title {
+              font-size: 22px; /* Adjust title font size */
+          }
+
+          .content {
+              flex-direction: column; /* Stack sections vertically */
+          }
+
+          .section, .section2 {
+              flex: 0 0 100%; /* Make both sections take full width on smaller screens */
+          }
+
+          .OrangeImage{
+             display:none;
+      }
+      }
+
+      @media (max-width: 800px) {
+          .content {
+              max-width: 100%; /* Ensure content takes full width */
+              padding: 10px; /* Add padding on smaller screens */
+          }
+
+          .section2 h2 {
+              font-size: 20px; /* Smaller font size for better readability */
+          }
+
+          .Section2IMG {
+              width: 100%; /* Ensure images take full width on smaller screens */
+          }
+
+          .footer-container {
+              flex-direction: column; /* Stack footer items vertically on smaller screens */
+          }
+
+          .footer-links {
+              gap: 10px; /* Reduce gap between links in the footer */
+          }
+
+          .footer-social {
+              margin-top: 20px; /* Add space above the social icons */
+          }
+      }
+
+      @media (max-width: 500px) {
+          .newsletter-title {
+              font-size: 18px; /* Further reduce the font size for very small screens */
+          }
+
+          .header img {
+              max-width: 250px; /* Reduce logo size */
+          }
+
+          .footer-links ul li {
+              font-size: 11px; /* Reduce font size for smaller screens */
+          }
+
+          .footer-social a img {
+              width: 25px; /* Reduce social icon size */
+              height: 25px;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="https://www.spectrosci.com/"
+        ><img
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh2m/1083382/1733375241g8VCsj0c/Spectro_Logo.png"
+          alt="Spectro Scientific Logo"
+        />
+      </a>
+      <img
+        class="OrangeImage"
+        src="https://go.spectrosci.com/l/1083382/2024-12-06/2vnkkq/1083382/17334776947bqGuYjF/orange_bullet_1.webp"
+      />
+    </div>
+    <div class="newsletter-title" pardot-region="Header">
+      The Monitor - Third Quarter, 2024 Newsletter
+    </div>
+    <div class="content">
+      <!-- Left Section -->
+      <div class="section" pardot-region="Section-1">
+        <h2>In This Issue</h2>
+        <ul class="firstList">
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section1')"
+              class="list-link"
+              >What's Next For Testing Lubricant Oils?</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section2')"
+              class="list-link"
+              >Noria Unboxing Video: MiniLab 153 Series Comprehensive Oil
+              Analyzer</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section3')"
+              class="list-link"
+              >MicroLab 40 Transforms Equipment Maintenance Practices At
+              ArcelorMittal</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section4')"
+              class="list-link"
+              >Adding Grease Analysis To Your Onsite Lubricant Condition
+              Monitoring Program</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section5')"
+              class="list-link"
+              >MicroLab On-Site Lubricant Analysis System for Fleets</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section6')"
+              class="list-link"
+              >InfraCal 2 Oil In Water/Soil Analyzers</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section7')"
+              class="list-link"
+              >Tradeshows and Events In Q3</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0);"
+              onclick="scrollToSection('section8')"
+              class="list-link"
+              >Upcoming Events</a
+            >
+          </li>
+        </ul>
+
+        <br />
+
+        <hr class="custom-line" />
+
+        <p style="color: #0077b6">
+          <strong>Download Oil Analysis Handbook</strong>
+        </p>
+        <img
+          class="Section1IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnhc7/1083382/17333936477WaK8RMg/Oil_Analysis_Handbook_no_background.webp"
+          alt="Robert Wopperer"
+        />
+
+        <br />
+
+        <hr class="custom-line" />
+
+        <p style="color: #0077b6">
+          <strong>Download Fluid Analysis Solutions Catalog</strong>
+        </p>
+        <img
+          class="Section1IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnhcb/1083382/1733393708N9nmED3V/Fluid_Analysis_Product_Catalog.webp"
+          alt="Robert Wopperer"
+        />
+        <br />
+        <br />
+
+        <hr class="custom-line" />
+
+        <br />
+        <br />
+
+        <a
+          href="https://www.spectrosci.com/contact/?hsCtaTracking=ed5d9e5e-0eae-4284-b648-40e8598a4b01%7C24691887-77be-4621-8731-d3215de92bd6"
+          class="contact-button"
+          >Kontaktieren Sie uns</a
+        >
+      </div>
+      <!-- Right Section -->
+      <div class="section2" pardot-region="Section-2">
+        <h3 id="section1">What's Next For Testing Lubricant Oils?</h3>
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh4m/1083382/17333788259WuVNtZd/AZOM_Article_Robert_Wopperer.webp"
+          alt="Robert Wopperer"
+        />
+        <p>
+          <strong
+            >Can you tell us what Spectro Scientific does, as well as its
+            history?</strong
+          >
+        </p>
+        <p>
+          Spectro Scientific is the world’s leading supplier of lubrication oil
+          testing equipment. We began as an equipment supplier to laboratories
+          that provided lubrication oil testing as a service. Recently, we have
+          expanded beyond the traditional lab to supply equipment for on-site
+          and field portable applications.c
+        </p>
+
+        <br />
+
+        <div class="video-section" style="text-align: left; margin-top: 20px">
+          <iframe
+            width="612"
+            height="344"
+            src="https://www.youtube.com/embed/Mib0_MwLga0"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <p>
+          This started about ten years after Spectro Scientific was founded. We
+          were contracted by the US government to design portable systems that
+          could be used by the military and embassies worldwide to support the
+          mechanical assets in the system.
+        </p>
+
+        <p>
+          Today, Spectro Scientific is the exclusive supplier of equipment to
+          the US Military’s Joint Oil Analysis Program (JOAP), which has used
+          the SpectrOil Optical Emission system for the past 25 years.
+        </p>
+
+        <p>
+          In recent years, the US military has adopted Spectro Scientific’s
+          FieldLab as the next-generation equipment for their oil analysis
+          program. It is currently known as EFAS, Expeditionary Fluid Analysis
+          System. It is essentially a lab in a box.
+        </p>
+
+        <p>
+          We have grown our commercial footprint well beyond government
+          applications to become the world’s leading supplier of oil analysis
+          equipment for asset owners and maintainers. We can now bring the
+          equipment on-site and provide answers in minutes, whereas it
+          previously used to take days or even weeks to reach the end user.
+        </p>
+
+        <p>
+          Spectro Scientific is currently part of AMETEK Incorporated. AMETEK
+          has significantly contributed to Spectro Scientific’s global outreach.
+          We are now operating in more than 70 countries globally and witnessing
+          the benefits of our oil analysis equipment being used in a wide
+          variety of industrial and regional settings.
+        </p>
+
+        <br />
+
+        <p>
+          <strong
+            >Can you tell us about the history of patent innovation?</strong
+          >
+        </p>
+
+        <p>
+          Spectro Scientific holds over 70 patents centered around the
+          fundamental notion of performance fluid analysis. We use a variety of
+          methods, including optical emission spectroscopy, particle imaging,
+          and mid-infrared analysis, to better understand three basic concepts:
+          fluid condition, sources of contamination, and wear metal analysis.
+        </p>
+
+        <p>
+          We combine all the test information into a single concept of
+          <a href="#">diagnostic determinations and prognostic predictions.</a>
+        </p>
+
+        <br />
+
+        <p>
+          <strong
+            >Can you discuss both traditional and cutting-edge industries where
+            Spectro Scientific's equipment is being used?
+          </strong>
+        </p>
+
+        <p>
+          Spectro Scientific’s equipment is used in several heavy industries
+          worldwide, including electric power generation. We support the fleets
+          of vehicles used by the global mining industry. Our technologies are
+          also employed in light manufacturing, such as automotive and food and
+          beverage manufacturing, as well as cutting-edge applications like
+          Formula One racing and space exploration..
+        </p>
+
+        <br />
+        <p>
+          <strong>What do you envision for the future of oil analysis?</strong>
+        </p>
+        <p>
+          As Spectro Scientific looks to the future, we are considering several
+          shifting dynamics in the marketplace. One of them is an aging
+          workforce in the industries. To support the industries that are facing
+          experts retiring, we are doing our very best to keep the expertise in
+          the box.
+        </p>
+
+        <p>
+          One key area is focusing on the testing of the oil sample itself,
+          where we have simplified and automated the system to handle everything
+          from a bottle of oil to getting the final chemical analysis results.
+        </p>
+
+        <p>
+          Another area we are focusing on is the translation of these chemical
+          analysis results into maintenance activities. We are using advanced
+          algorithms and artificial intelligence to essentially put the expert
+          in the box, allowing the system to automatically translate chemistry
+          data into maintenance tasks.
+        </p>
+
+        <br />
+
+        <p><strong>Can you talk about Spectro Scientific's Mission?</strong></p>
+
+        <p>
+          Our goal at Spectro Scientific is to put the oil analysis laboratory
+          into a single solution. This includes the ability to test the oil
+          easily, as well as to translate that test data into maintenance
+          activities and future reliability projections.
+        </p>
+
+        <p>
+          The LaserNet Fines exemplifies our technology’s evolution to meet
+          modern workplace demands. This advanced particle imaging system
+          replaces traditional ferrography, where scientists manually examine
+          particles under a microscope to determine their source based on shape,
+          color, or specific markings. Instead, the LaserNet Fines utilizes
+          neural networks to analyze image data and convert it into trendable
+          parameters, streamlining the process and enhancing accuracy.
+        </p>
+
+        <p>
+          We can determine the source of particles, whether they are due to
+          water, sand, dirt, or which type of wear. All of this information is
+          processed through the LaserNet Fines and then fed into the algorithms
+          that produce the diagnostic and prognostic determinations.
+        </p>
+
+        <h2><strong> Click here to read the full article </strong></h2>
+        <br />
+
+        <hr class="custom-line" />
+
+        <p id="section2">
+          <strong
+            >Noria Unboxing Video: MiniLab 153 Series Comprehensive Oil Analyzer
+          </strong>
+        </p>
+
+        <br />
+
+        <div class="video-section" style="text-align: left; margin-top: 20px">
+          <iframe
+            width="612"
+            height="344"
+            src="https://www.youtube.com/embed/9EcAuuxqZBA?feature=oembed"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <p>
+          In this video, we’re unboxing the Spectro Scientific MiniLab 153, a
+          powerful portable oil analysis system designed for onsite fluid
+          condition monitoring. We’ll take a close look at the components, key
+          features, and the tests this compact system can perform to help you
+          monitor equipment health and avoid costly downtime.
+        </p>
+
+        <h2>
+          <strong> Click here to learn more about the MiniLab Series</strong>
+        </h2>
+
+        <br />
+
+        <hr class="custom-line" />
+
+        <p id="section3">
+          <strong
+            >MicroLab 40 Transforms Equipment Maintenance Practices At
+            ArcelorMittal Prijedor</strong
+          >
+        </p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh7j/1083382/1733387581D94mEA4D/MicroLab_Prijedor_Case_Study_2024_Header_Final.webp"
+          alt="Robert Wopperer"
+        />
+
+        <p><strong>Background</strong></p>
+
+        <p>
+          ArcelorMittal Prijedor has the largest iron ore mine in the Balkans,
+          which employs about 800 workers. Since its founding in 2004, the
+          company’s primary activity is producing iron ore concentrate, with an
+          annual output of 1.5 to two million tons. Other activities include
+          producing stone aggregates, mechanical and electrical maintenance, and
+          transport services.
+        </p>
+
+        <p>
+          Facing a drop in the reliability of their mining equipment,
+          ArcelorMittal Prijedor began searching for options to prevent
+          breakdowns and after extensive research, purchased a MicroLab 40 unit
+          from Spectro Scientific.
+        </p>
+
+        <p><strong>The Challenge</strong></p>
+
+        <p>
+          ArcelorMittal Prijedor faced three major challenges when their mining
+          equipment declined in reliability. The first was determining the
+          reasons for the equipment breakdowns. Sudden engine stoppages were the
+          biggest problem, and the equipment downtime resulted in production
+          delays and rising costs. The Maintenance Department spent
+          approximately €1 million annually on unscheduled repairs.
+        </p>
+
+        <p>
+          The company sent oil samples from the machines to local laboratories
+          for testing, but because the results were imprecise and inconclusive,
+          it was difficult to identify the causes of the engine failures.
+        </p>
+
+        <p>
+          Second, the Maintenance Department faced budget constraints that
+          prohibited investing in new equipment and parts. There was also
+          disagreement about how to spend money on maintenance—whether to
+          purchase new or refurbished parts, repair the equipment, or replace
+          the equipment.
+        </p>
+
+        <p>
+          Third, the limited availability of local service technicians forced
+          the company to rely on internal expertise and equipment. After
+          unsuccessful negotiations with local laboratories for device
+          recommendations, the management team decided to purchase a predictive
+          maintenance tool for onsite oil analysis.
+        </p>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>
+          The management team selected Ametek Spectro Scientific’s MicroLab 40
+          unit for its reliability and accuracy in identifying equipment issues
+          and recommending effective solutions. The MicroLab’s Expert Rules
+          System predicts problems, so maintenance personnel can resolve them
+          before an equipment breakdown. Also, the MicroLab helped establish
+          consistent tasks for regular maintenance, which reduces downtime and
+          increases the lifespan of the equipment.
+        </p>
+
+        <p>The result</p>
+
+        <p>
+          Since the MicroLab 40 was introduced into maintenance operations four
+          years ago, ArcelorMittal Prijedor has saved approximately €2 million
+          in machine downtime and repairs. The biggest savings are in longer
+          engine lifespans. Now, thanks to the MicroLab’s predictive analysis
+          features, the Maintenance Department invests €10,000 for each engine
+          repair compared to the previous standard overhaul cost of €100,000.
+          The average turnaround time for maintenance has dropped to three
+          hours, which further reduces repair costs and downtime.
+        </p>
+
+        <p>Benefits</p>
+
+        <ol class="benefit-list">
+          <li>Breakdowns prevented before they can happen</li>
+          <li>
+            Reasons for equipment failures identified quickly and effectively
+          </li>
+          <li>
+            Consistent routine activities established for regular equipment
+            service
+          </li>
+          <li>Significant cost savings</li>
+          <li>Extended engine life</li>
+          <li>Less equipment downtime</li>
+        </ol>
+
+        <h2><strong>Click to read and download full White Paper</strong></h2>
+        <br />
+
+        <hr class="custom-line" />
+
+        <p id="section4">
+          <strong
+            >Adding Grease Analysis to your Onsite Lubricant Condition
+            Monitoring Program</strong
+          >
+        </p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh7q/1083382/1733388117zS7SIRto/onsite_grease_analysis_1200a.jpg"
+          alt="Robert Wopperer"
+        />
+
+        <p>
+          Onsite oil analysis is an effective tool to analyze samples and
+          optimize maintenance activities quickly. As part of a comprehensive
+          condition-based maintenance program (CBM), oil analysis effectively
+          complements other diagnostic technologies like vibration analysis,
+          infrared thermography, and ultrasound technology.
+        </p>
+
+        <p>
+          However, this critical lubrication monitoring step is often overlooked
+          in grease-lubricated equipment. SKF states that 80% of the world’s
+          bearings are grease-lubricated, leaving a vast opportunity to
+          incorporate grease analysis techniques into the overall CBM strategy.
+        </p>
+
+        <p>
+          The Electric Power Research Institute (EPRI) suggests that nearly 50%
+          of bearing failures are related to poor lubrication and
+          contamination1. The development of grease condition monitoring
+          standards, ASTM D7718 and ASTM D7918 have laid the foundation for a
+          consistent methodology to sample and test grease to implement
+          condition monitoring strategies.
+        </p>
+
+        <p>
+          By monitoring key data points, such as wear, oxidation, and additive
+          health, the asset manager can transition from calendar-based to
+          condition-based changeouts. This has the potential to save hundreds of
+          thousands of dollars per year for an owner of a large fleet.
+        </p>
+
+        <p>
+          The wind, rail, and automotive robotics industries are implementing
+          these strategies into their programs and potentially avoiding
+          thousands in maintenance costs by predicting failures and extending
+          greasing intervals.
+        </p>
+
+        <p>
+          The small quantity of grease typically available on an in-service
+          component and the limited testing available for small amounts of
+          grease often present barriers to routine grease sampling and analysis.
+        </p>
+
+        <p>
+          To address these challenges, grease sampling tools can capture a
+          representative sample from bearings and gears requiring as little as
+          one gram of grease. Onsite analysis tools are available to assess the
+          wear and physical properties of the grease.
+        </p>
+
+        <p>
+          This simple sampling technique can be used in various industries,
+          including but not limited to wind, rail, robotics, mining, and
+          nuclear, to sample a large number of grease-lubricated components and
+          evaluate the next actions based on the criticality of the data.
+        </p>
+
+        <p>
+          Periodic sampling and analysis of the grease from these components can
+          give asset owners a clearer picture of equipment health, determine
+          grease conditions for optimal change-out periods, and pinpoint latent
+          issues that can be addressed before failure.
+        </p>
+
+        <h2>Click here to read full Article</h2>
+
+        <br />
+
+        <hr class="custom-line" />
+
+        <p id="section5">
+          <strong
+            >MicroLab On-Site Lubricant Analysis System for Fleets
+          </strong>
+        </p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh87/1083382/1733388302sDe4TPMO/MicroLab_Operator_SampleBottle_20145rev_Mrg_copy.webp"
+          alt="Robert Wopperer"
+        />
+
+        <p>
+          The MicroLab® combines automation and artificial intelligence in an
+          all-in-one oil analysis tool, making on-site oil analysis possible for
+          any fleet.
+        </p>
+
+        <ul class="custom-bullets">
+          <li>Simple to use - no special operator required</li>
+          <li>Fast - results in less than 15 minutes</li>
+          <li>
+            Easy to read reports - color-coded alarms and maintenance actions
+          </li>
+          <li>Compliant with ASTM D7417</li>
+        </ul>
+
+        <h2>Click here to read full Article</h2>
+
+        <br />
+
+        <hr class="custom-line" />
+
+        <p id="section6">
+          <strong>InfraCal 2 ATR-SP Oil In Water/Soil Analyzers </strong>
+        </p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh8j/1083382/1733388456YgJu4DJ9/Infracal_2_brochure.webp"
+          alt="Robert Wopperer"
+        />
+
+        <p>
+          The InfraCal Model ATR-SP is a quick and easy solution for measuring
+          oil in water, TPH in soil or FOG in wastewater concentration levels.
+          With its portability, speed, and accuracy, it helps to ensure
+          compliance with local regulations and best practices, while saving
+          time and money on laboratory analysis.
+        </p>
+
+        <p>On-site results in less than 15 minutes.</p>
+        <ul class="custom-bullets">
+          <li>Stay in compliance</li>
+          <li>Avoid regulatory fines.</li>
+          <li>Make real time process control decisions.</li>
+        </ul>
+
+        <h2>
+          .Click here to learn more about the InfraCal ATR-SP Oil In Water
+          Analyzer
+        </h2>
+
+        <br />
+
+        <hr class="custom-line" />
+
+        <p id="section7"><strong>Tradeshows and Events In Q3</strong></p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh8q/1083382/1733388897OOHapZbo/Mine_Expo_2024.webp"
+          alt="Robert Wopperer"
+        />
+
+        <p><strong>Lubricant Expo Europe </strong></p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh8t/1083382/173338897484afJtFA/Lube_Expo_2024_1.webp"
+          alt="Robert Wopperer"
+        />
+
+        <p><strong>Texas Workshop</strong></p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh8x/1083382/1733389019WDUOBIfG/Texas_Workshop_2024_1.webp"
+          alt="Robert Wopperer"
+        />
+
+        <p><strong>World of Industry, Technology & Science 2024 </strong></p>
+
+        <img
+          class="Section2IMG"
+          src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh91/1083382/17333890758bbZgQht/World_Of_Industry_Technology___Science_2024_1.webp"
+          alt="Robert Wopperer"
+        />
+
+        <br />
+        <br />
+        <hr class="custom-line" />
+
+        <p id="section8"><strong>Upcoming Events</strong></p>
+
+        <p><strong> Tradeshows</strong></p>
+
+        <ul class="custom-bullets">
+          <li>
+            <strong style="color: #0077b6">DoD Symposium</strong><br />
+            December 10-13, Salt Lake City, UT<br />
+            Booth #526
+          </li>
+        </ul>
+
+        <br />
+        <hr class="custom-line" />
+
+        <h2>Stay updated and follow us on LinkedIn, Twitter and YouTube.</h2>
+        <br />
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/spectro-inc/"
+            ><img
+              src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh5j/1083382/1733384139nMCILBZU/in.webp"
+              alt="LinkedIn"
+          /></a>
+          <a href="http://www.youtube.com/user/SpectroScientific"
+            ><img
+              src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh5m/1083382/17333841680NBbo7Ol/youtube1.webp"
+              alt="YouTube"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <footer>
+    <div class="footer-container">
+        <div class="footer-links">
+            <ul>
+                <li><a href="https://www.spectrosci.com/product">Products</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Consumables</a></li>
+                <li><a href="https://www.spectrosci.com/contact">Contact Us</a></li>
+                <li><a href="https://www.spectrosci.com/knowledge-center/resource-library">Resource Center</a></li>
+                <li><a href="https://spectrosci.my.salesforce.com/sserv/login.jsp?orgId=00DE0000000KS3k">Self Service Portal</a></li>
+                <li><a href="https://spectrosci.my.salesforce-sites.com/partnerportal/">Salesforce Portal </a></li>
+                <li><a href="https://blog.spectrosci.com/">Blog</a></li>
+            </ul>
+        </div>
+        <div class="footer-links" style="margin-left:20px;">
+            <ul>
+                <li><a href="https://www.spectrosci.com/company">Company</a></li>
+                <li><a href="https://www.spectrosci.com/services/">Services</a></li>
+                <li><a href="https://www.spectrosci.com/company/about-us/careers">Careers</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Directions</a></li>
+                <li><a href="https://www.spectrosci.com/find-representatives">Find Representatives</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/company/spectro-inc/"><img src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh5j/1083382/1733384139nMCILBZU/in.webp" alt="LinkedIn"></a>
+            <a href="http://www.youtube.com/user/SpectroScientific"><img src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh5m/1083382/17333841680NBbo7Ol/youtube1.webp" alt="YouTube"></a>
+            <a href="https://twitter.com/SpectroSci"><img src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh5q/1083382/1733384189nVRUuISz/twitter.webp" alt="Twitter"></a>
+            <a href="https://plus.google.com/117839926496512819558"><img src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh5t/1083382/1733384213qGuiZl9k/googleplus.webp" alt="Google+"></a>
+            <a href="https://www.facebook.com/pages/Spectro-Scientific/522834977826897"><img src="https://go.spectrosci.com/l/1083382/2024-12-05/2vnh5x/1083382/1733384234KMvcybOg/fb.webp" alt="Facebook"></a>
+        </div>
+    </div>
+    <p class="FooterText">© 2018 AMETEK Spectro Scientific | An ISO 9001:2015 Company</p>
+</footer> -->
+
+    <footer
+      style="
+        background-color: #0078ae;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 20px;
+          text-align: left;
+        "
+      >
+        <!-- Left Column: Logo -->
+
+        <div style="margin-left: 100px">
+          <img
+            alt="Spectro Scientific Logo"
+            src="https://go.spectrosci.com/l/1083382/2024-12-10/2vnnyx/1083382/1733809305KjIv43lq/spectroscientific_logo_white_new.png"
+            style="
+              height: 120px;
+              display: block;
+              margin-bottom: 20px;
+              margin-left: 20px;
+            "
+          />
+        </div>
+        <!-- Middle Column: Links -->
+
+        <div style="margin-left: 100px">
+          <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8">
+            <li>
+              <a
+                href="https://www.spectrosci.com/product"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Product</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/services"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Services
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://store.spectrosci.com/"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Consumables
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://store.spectrosci.com/"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Accessories
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://store.spectrosci.com/"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >E-Store</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div style="margin-left: 5px">
+          <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8">
+            <li>
+              <a
+                href="https://www.spectrosci.com/company"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Company
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/knowledge-center"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Knowledge
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/industries"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Industries</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/services/training-courses"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >Training
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.spectrosci.com/news/news"
+                style="color: #ffffff; text-decoration: none"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+                >News
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Column: Contact Info -->
+
+        <div style="margin-right: 100px">
+          <p style="margin: 0; line-height: 1.8">
+            <strong>Spectro Scientific</strong><br />
+            One Executive Drive, Suite 101<br />
+            Chelmsford, MA 01824-2563<br />
+            <a
+              href="tel:9784860123"
+              style="color: #ffffff; text-decoration: none"
+              >978.486.0123</a
+            >
+          </p>
+
+          <!-- Right Column: Social Media -->
+
+          <br />
+          <div style="text-align: left">
+            <a
+              href="https://www.linkedin.com/company/spectro-inc/"
+              style="margin-right: 15px"
+              ><i
+                class="fa fa-linkedin"
+                style="font-size: 25px; color: white"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+              ></i
+            ></a>
+            <a href="https://x.com/SpectroSci" style="margin-right: 15px"
+              ><i
+                class="fa fa-twitter"
+                style="font-size: 25px; color: white"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+              ></i
+            ></a>
+            <a href="https://www.youtube.com/user/SpectroScientific">
+              <i
+                class="fa fa-youtube-play"
+                style="font-size: 25px; color: white"
+                onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+                onMouseOut="this.style.color='#ffffff'"
+              ></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Section: Footer Links -->
+
+      <div
+        style="
+          margin-top: 20px;
+          text-align: center;
+          padding-top: 10px;
+          margin-right: 100px;
+          margin-left: 100px;
+        "
+      >
+        &copy; 2021-2024 Ametek Spectro Scientific |
+        <a
+          href="https://www.spectrosci.com/-/media/project/ameteksxa/spectroscientific/ametekspectro/shared/iso-cert/iso-9001-2015.pdf?la=en&amp;revision=54b357f7-83e9-4316-8631-fb5fa4d8f92b&amp;hash=FCFE5ADEB74D1AC04991A28BEC23EEAB"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Certified to ISO 9001:2015</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/privacy"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Privacy Policy</a
+        >
+        |
+        <a
+          href="https://www.ametek.com/cookies"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Cookie Policy</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/forms/unsubscribeformpage"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Unsubscribe</a
+        >
+        |
+        <a
+          href="https://www.spectrosci.com/do-not-sell-share"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Do Not Sell or Share My Personal Information</a
+        >
+        |
+        <a
+          href="https://www.ametek.com/terms-of-use"
+          style="color: #ffffff; text-decoration: none; margin: 0 5px"
+          onMouseOver="this.style.color='#7AC143 /*231F20*/'"
+          onMouseOut="this.style.color='#ffffff'"
+          >Terms of Use</a
+        >
+      </div>
+    </footer>
+    <!-- Bootstrap JavaScript - Adithya-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

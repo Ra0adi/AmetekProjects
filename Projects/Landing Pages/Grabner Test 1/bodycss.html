@@ -1,0 +1,252 @@
+<style>
+    /* --------------------------------------------------------------
+                          CONTENT CSS
+        ----------------------------------------------------------------- */
+  
+    .newsletter-title {
+      background-color: #006fa0;
+      color: white;
+      text-align: center;
+      height: 120px; /* Set fixed height */
+      display: flex; /* Use Flexbox to center content vertically */
+      align-items: center; /* Vertically align text */
+      justify-content: center; /* Horizontally align text */
+      font-size: 4vh; /* Adjust font size */
+      font-weight: 800; /* Make text slightly bolder */
+      /* margin: 0 auto; Remove margin to eliminate space */
+      border-radius: 20px;
+      padding: 20px; /* Remove padding for better height control */
+      max-width: 90%;
+      text-transform: uppercase;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+    }
+  
+    .content {
+      display: flex; /* Flexbox for side-by-side layout */
+      max-width: 90%;
+      margin: 0 auto; /* Remove the margin to center the content and eliminate space */
+      background: white;
+      flex-direction: row;
+      /* align-content: flex-start;
+                      align-items: flex-start;
+                      justify-content: space-evenly; */
+      gap: 20px; /* Space between sections */
+      flex-wrap: wrap; /* Allow sections to wrap when screen size is smaller */
+      margin-top: 15px;
+    }
+  
+    .section {
+      flex: 0 0 200px; /* Fixed width for the first section */
+      background-color: #fff;
+      padding: 15px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+      max-height: fit-content;
+    }
+  
+    .section.col h3 {
+    }
+  
+    ul.firstList {
+      /* position: absolute; */
+      /* top: 50%; */
+      /* left: 50%; */
+      /* transform: translate(-50%, -50%); */
+      /* display: flex; */
+      li {
+        list-style: none;
+        a {
+          position: relative;
+          display: block;
+          text-transform: uppercase;
+          /* margin: 20px 0; */
+          padding: 10px 20px;
+          text-decoration: none;
+          color: #262626;
+          font-family: sans-serif;
+          font-size: inherit;
+          font-weight: 600;
+          transition: 0.5s;
+          z-index: 1;
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* width: 100%; */
+            /* height: 100%; */
+            /* border-top: 2px solid #5c2c8b; */
+            /* border-bottom: 2px solid #5c2c8b; */
+            transform: scaleY(2);
+            opacity: 0;
+            transition: 0.3s;
+          }
+          &:after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #5c2c8b;
+            transform: scale(0);
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: 0.3s;
+            z-index: -1;
+          }
+          &:hover {
+            color: #fff;
+            &:before {
+              transform: scaleY(1);
+              opacity: 1;
+            }
+            &:after {
+              transform: scaleY(1);
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  
+    h1 {
+      font-size: inherit;
+    }
+    #section1 {
+      font-size: 1.6vw;
+    }
+  
+    /* .section h2 {
+                color: black;
+                margin-bottom: 10px;
+              }*/
+  
+    .section2 {
+      /* flex: 0 0 650px; Fixed width for the second section */
+      background-color: #ffff;
+      padding: 15px;
+      display: inline-flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      font-size: inherit;
+      font-weight: 400;
+    }
+  
+    .section2 h2 {
+      color: #0077b6;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 1.1vw;
+    }
+  
+    .insights-banner {
+      background-color: #d71921;
+      color: white;
+      width: 625px;
+      text-align: center;
+    }
+  
+    .insights-banner img {
+      max-width: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  
+    .insights-banner h3 {
+      margin: 10px 0;
+    }
+  
+    .in-this-issue ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .in-this-issue ul li {
+      margin-bottom: 10px;
+    }
+  
+    .in-this-issue a {
+      text-decoration: none;
+      color: #0077b6;
+    }
+  
+    .in-this-issue a:hover {
+      text-decoration: underline;
+    }
+    iframe {
+      max-width: 100%;
+      width: 100vw;
+    }
+    .Section2IMG {
+      height: auto;
+      max-height: 60vh;
+      max-width: 100%;
+      width: 100vw;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  
+    .Section1IMG {
+      height: auto;
+      max-width: 100%;
+      width: 195px;
+    }
+  
+    ul {
+      list-style: none; /* Optional: Removes default bullet points */
+      padding: 0; /* Optional: Removes default padding */
+    }
+  
+    ul li {
+      margin-bottom: 10px; /* Adds space between list items */
+    }
+  
+    .list-link {
+      font-weight: 0; /* Makes the text bold */
+      font-size: 16px; /* Sets the font size */
+      color: #0c5394; /* Sets the desired color */
+      text-decoration: none; /* Ensures no underline is shown */
+      font-style: italic;
+    }
+  
+    .list-link:hover {
+      text-decoration: none; /* Ensures no underline even on hover */
+      color: #0c5394; /* Keeps the same color on hover */
+    }
+  
+    /* Images do not extend containers */
+    img {
+      max-width: 100%;
+      width: fit-content;
+    }
+    table img {
+      width: 100%;
+      max-width: 150px !important;
+    }
+  
+    /* Grey BG */
+    .grey {
+      background-color: #eee;
+    }
+  
+    /* Enable strong control over editable table cell widths */
+    table.editable-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+  
+    /* Set default editable table cell spacing & widths */
+    table.editable-table.3col td {
+      padding: 0px 15px;
+      width: 33%;
+    }
+    table.editable-table.2col td {
+      padding: 0px 15px;
+      width: 50%;
+    }
+  </style>
+  
